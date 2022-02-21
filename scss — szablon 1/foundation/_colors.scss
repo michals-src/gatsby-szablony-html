@@ -1,0 +1,136 @@
+$white:     #fff;
+$grey-10:   #f8f9fa;
+$grey-20:   #e9ecef;
+$grey-30:   #dee2e6;
+$grey-40:   #ced4da;
+$grey-50:   #adb5bd;
+$grey-60:   #6c757d;
+$grey-70:   #495057;
+$grey-80:   #343a40;
+$grey-90:   #212529;
+$black:     #000;
+
+$blue:  #0a53b3 !default;
+$cyan:  #4895ef !default;
+$teal:  #208688 !default;
+$green: #258359 !default;
+$purple:#7209b7 !default;
+$red:   #b9060c !default;
+$orange:#f36812 !default;
+$pink:  #ff5887 !default;
+$yellow:#ffba08 !default;
+
+$colors-pallete: (
+    'blue':     $blue,
+    'cyan':     $cyan,
+    'teal':     $teal,
+    'green':    $green,
+    'purple':   $purple,
+    'red':      $red,
+    'orange':   $orange,
+    'pink':     $pink,
+    'yellow':   $yellow
+) !default;
+
+$blue-10: mix( white, $blue, 75% );
+$blue-20: mix( white, $blue, 50% );
+$blue-30: mix( white, $blue, 25% );
+$blue-40: mix( white, $blue, 10% );
+$blue-50: $blue;
+$blue-60: mix( black, $blue, 10% );
+$blue-70: mix( black, $blue, 25% );
+$blue-80: mix( black, $blue, 50% );
+$blue-90: mix( black, $blue, 75% );
+
+$cyan-10: mix( white, $cyan, 75% );
+$cyan-20: mix( white, $cyan, 50% );
+$cyan-30: mix( white, $cyan, 25% );
+$cyan-40: mix( white, $cyan, 10% );
+$cyan-50: $cyan;
+$cyan-60: mix( black, $cyan, 10% );
+$cyan-70: mix( black, $cyan, 25% );
+$cyan-80: mix( black, $cyan, 50% );
+$cyan-90: mix( black, $cyan, 75% );
+
+$teal-10: mix( white, $teal, 75% );
+$teal-20: mix( white, $teal, 50% );
+$teal-30: mix( white, $teal, 25% );
+$teal-40: mix( white, $teal, 10% );
+$teal-50: $teal;
+$teal-60: mix( black, $teal, 10% );
+$teal-70: mix( black, $teal, 25% );
+$teal-80: mix( black, $teal, 50% );
+$teal-90: mix( black, $teal, 75% );
+
+$green-10: mix( white, $green, 75% );
+$green-20: mix( white, $green, 50% );
+$green-30: mix( white, $green, 25% );
+$green-40: mix( white, $green, 10% );
+$green-50: $green;
+$green-60: mix( black, $green, 10% );
+$green-70: mix( black, $green, 25% );
+$green-80: mix( black, $green, 50% );
+$green-90: mix( black, $green, 75% );
+
+$purple-10: mix( white, $purple, 75% );
+$purple-20: mix( white, $purple, 50% );
+$purple-30: mix( white, $purple, 25% );
+$purple-40: mix( white, $purple, 10% );
+$purple-50: $purple;
+$purple-60: mix( black, $purple, 10% );
+$purple-70: mix( black, $purple, 25% );
+$purple-80: mix( black, $purple, 50% );
+$purple-90: mix( black, $purple, 75% );
+
+$red-10: mix( white, $red, 75% );
+$red-20: mix( white, $red, 50% );
+$red-30: mix( white, $red, 25% );
+$red-40: mix( white, $red, 10% );
+$red-50: $red;
+$red-60: mix( black, $red, 10% );
+$red-70: mix( black, $red, 25% );
+$red-80: mix( black, $red, 50% );
+$red-90: mix( black, $red, 75% );
+
+$orange-10: mix( white, $orange, 75% );
+$orange-20: mix( white, $orange, 50% );
+$orange-30: mix( white, $orange, 25% );
+$orange-40: mix( white, $orange, 10% );
+$orange-50: $orange;
+$orange-60: mix( black, $orange, 10% );
+$orange-70: mix( black, $orange, 25% );
+$orange-80: mix( black, $orange, 50% );
+$orange-90: mix( black, $orange, 75% );
+
+$pink-10: mix( white, $pink, 75% );
+$pink-20: mix( white, $pink, 50% );
+$pink-30: mix( white, $pink, 25% );
+$pink-40: mix( white, $pink, 10% );
+$pink-50: $pink;
+$pink-60: mix( black, $pink, 10% );
+$pink-70: mix( black, $pink, 25% );
+$pink-80: mix( black, $pink, 50% );
+$pink-90: mix( black, $pink, 75% );
+
+$yellow-10: mix( white, $yellow, 75% );
+$yellow-20: mix( white, $yellow, 50% );
+$yellow-30: mix( white, $yellow, 25% );
+$yellow-40: mix( white, $yellow, 10% );
+$yellow-50: $yellow;
+$yellow-60: mix( black, $yellow, 10% );
+$yellow-70: mix( black, $yellow, 25% );
+$yellow-80: mix( black, $yellow, 50% );
+$yellow-90: mix( black, $yellow, 75% );
+
+$colors-pallete-mix: (
+    'blue':     ( $blue-10, $blue-20, $blue-30, $blue-40, $blue-50, $blue-60, $blue-70, $blue-80, $blue-90 ),
+    'cyan':     ( $cyan-10, $cyan-20, $cyan-30, $cyan-40, $cyan-50, $cyan-60, $cyan-70, $cyan-80, $cyan-90 ),
+    'teal':     ( $teal-10, $teal-20, $teal-30, $teal-40, $teal-50, $teal-60, $teal-70, $teal-80, $teal-90 ),
+    'green':    ( $green-10, $green-20, $green-30, $green-40, $green-50, $green-60, $green-70, $green-80, $green-90 ),
+    'purple':   ( $purple-10, $purple-20, $purple-30, $purple-40, $purple-50, $purple-60, $purple-70, $purple-80, $purple-90 ),
+    'red':      ( $red-10, $red-20, $red-30, $red-40, $red-50, $red-60, $red-70, $red-80, $red-90 ),
+    'orange':   ( $orange-10, $orange-20, $orange-30, $orange-40, $orange-50, $orange-60, $orange-70, $orange-80, $orange-90 ),
+    'pink':     ( $pink-10, $pink-20, $pink-30, $pink-40, $pink-50, $pink-60, $pink-70, $pink-80, $pink-90 ),
+    'yellow':   ( $yellow-10, $yellow-20, $yellow-30, $yellow-40, $yellow-50, $yellow-60, $yellow-70, $yellow-80, $yellow-90 ),
+    'grey':     ( $grey-10, $grey-20, $grey-30, $grey-40, $grey-50, $grey-60, $grey-70, $grey-80, $grey-90 )
+) !default;

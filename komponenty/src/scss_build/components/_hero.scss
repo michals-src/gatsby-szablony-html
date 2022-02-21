@@ -1,0 +1,89 @@
+$hero-pallete: (
+    'blue': (
+        'light':        $blue-30,
+        'dark':         $blue-40,
+    ),
+    'green': (
+        'light':      $green-30,
+        'dark':      $green-40,
+    ),
+    'orange': (
+        'light':      $orange-30,
+        'dark':      $orange-40,
+    ),
+    'red': (
+        'light':      $red-30,
+        'dark':      $red-40,
+    ),
+);
+
+.hero{
+    width: 100%;
+    background: $grey-10;
+    color: $grey-80;
+    display: flex;
+    
+    .hero-content{
+        align-self: center;
+        height: 100%;
+        width: calc( 100% - 30px );
+        text-align: center;
+        margin: 0 auto;
+        padding: 65px 5px;
+
+        p:last-child{
+            margin-bottom: 0;
+        }
+    }
+
+    &.is-medium{
+        .hero-content{
+            padding-top: 130px;
+            padding-bottom: 130px;
+        }
+    }
+    &.is-large{
+        .hero-content{
+            padding-top: 240px;
+            padding-bottom: 240px;
+        }
+    }
+    &.is-half{
+        height: calc(50vh);
+
+        .hero-content{
+            display: flex;
+            align-items: center;
+        }
+    }
+    &.is-full{
+        height: calc(100vh);
+
+        .hero-content{
+            display: flex;
+            align-items: center;
+        }
+    }
+    &.is-outline{
+        border: 1px solid $grey-40;
+        background-color: transparent;
+    }
+}
+
+@each $color, $pallete in $hero-pallete{
+    $light: map-get( $pallete, 'light' );
+    $dark: map-get( $pallete, 'dark' );
+
+    .hero{
+        &.is-#{$color}{
+            background-color: $dark;
+            color: $white;
+
+            &.is-outline{
+                color: $dark;
+                background-color: transparent;
+                border: 1px solid $dark;
+            }
+        }
+    }
+}

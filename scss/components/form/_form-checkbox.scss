@@ -1,0 +1,106 @@
+$form-checkbox-width:                       16px;
+$form-checkbox-height:                      16px;
+$form-checkbox-border-radius:               .15rem;
+
+$form-checkbox-icon-color:                  $white;
+
+$form-checkbox-background-checked:          $form-input-border-color-hover;
+$form-checkbox-border-color-checked:        $blue-70;
+
+$form-checkbox-background-disabled:         $grey-10;
+$form-checkbox-border-color-disabled:       $grey-20;
+
+$form-checkbox-background-color-active:     $blue-30;
+$form-checkbox-border-color-active:         $blue-40;
+
+$form-checkbox-box-shadow-focus:            $form-input-box-shadow-focus;
+
+$form-checkbox-label-padding-left:          $form-checkbox-width * 1.75;
+
+.form\:checkbox{
+    position: relative;
+    cursor: pointer;
+
+    & + .form\:help-line{
+        margin-left: $form-checkbox-label-padding-left;
+        & + .form\:help-line{
+            margin-left: $form-checkbox-label-padding-left;
+        }
+    }
+
+    & .form\:checkbox-label{
+        padding-left: $form-checkbox-label-padding-left;
+    
+        &::before{
+            content: "";
+            width: $form-checkbox-width;
+            height: $form-checkbox-height;
+            border: 1px solid $form-input-border-color;
+            border-radius: $form-checkbox-border-radius;
+            position: absolute;
+            left: 0;
+            top: 0;
+            cursor: pointer;
+        }
+
+        &::after{
+            content: "";
+            width: $form-checkbox-width;
+            height: $form-checkbox-height;
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$form-checkbox-icon-color}' stroke='#{$form-checkbox-icon-color}' viewBox='0 0 24 24'><g id='Warstwa_3' data-name='Warstwa 3'><polygon points='10.5 15.71 7.15 12.35 7.85 11.65 10.5 14.29 16.15 8.65 16.85 9.35 10.5 15.71'/></g></svg>"));
+            background-position: center center;
+            opacity: 0;
+        }
+    }    
+
+    & .form\:checkbox-input{
+        @include form-input-streched();
+        cursor: pointer;
+
+        &:checked{
+
+            & + .form\:checkbox-label::before{
+                background-color: $form-checkbox-background-checked;
+                border-color: $form-checkbox-background-checked;
+            }
+
+            & + .form\:checkbox-label::after{
+                opacity: 1;
+            }
+
+            &:disabled{
+                & + .form\:checkbox-label::after{
+                    opacity: .5;
+                }
+            }
+        }
+
+        &:disabled{
+            & + .form\:checkbox-label::before{
+                background-color: $form-checkbox-background-disabled;
+                border-color: $form-checkbox-border-color-disabled;
+                box-shadow: none;
+            }
+            & + .form\:checkbox-label::after{
+                opacity: 0;
+            }
+        }
+
+        &:not([disabled]){
+            &:active + .form\:checkbox-label::before{
+                background-color: $form-checkbox-background-color-active;
+                border-color: $form-checkbox-border-color-active;
+            }
+
+            &:focus{
+                & + .form\:checkbox-label::before{
+                    box-shadow: 0 0 0 .15rem $form-checkbox-box-shadow-focus;
+                }
+            }
+        }
+
+    }
+}

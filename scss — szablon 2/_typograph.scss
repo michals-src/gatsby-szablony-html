@@ -1,0 +1,79 @@
+h1{
+    font-size: $font-size-base * 2.8;
+    @include make-heading();
+}
+
+h2{
+    font-size: $font-size-base * 2.1;
+    @include make-heading();
+}
+
+h3{
+    font-size: $font-size-base * 1.9;
+    @include make-heading();
+}
+
+h4{
+    font-size: $font-size-base * 1.65;
+    @include make-heading();
+}
+
+h5{
+    font-size: $font-size-base * 1.3;
+    @include make-heading();
+}
+
+h6{
+    font-size: $font-size-base * 1.05;
+    @include make-heading();
+}
+
+@include media-until( $breakpoint-md ){
+    h1{
+        font-size: $font-size-base * 2.3;
+    }
+    
+    h2{
+        font-size: $font-size-base * 1.9;
+    }
+    
+    h3{
+        font-size: $font-size-base * 1.8;
+    }
+    
+    h4{
+        font-size: $font-size-base * 1.5;
+    }
+    
+    h5{
+        font-size: $font-size-base * 1.15;
+    }
+    
+    h6{
+        font-size: $font-size-base;
+    }
+}
+
+p{
+    margin-top: 0;
+    margin-bottom: .8rem;
+    padding: 0;
+    line-height: $line-height-base;
+}
+
+a{
+    text-decoration: none;
+    color: $link-color-base;
+
+    &:hover{
+        text-decoration: underline;
+    }
+}
+
+blockquote{
+
+
+    figcaption{
+
+    }
+}

@@ -1,0 +1,221 @@
+// button
+//   -green
+//   -blue
+//   -orange
+//   -red
+//         button-outline
+//             -green
+//             -blue
+//             -orange
+//             -red
+//         button-icon
+//         button-plain
+
+$prx--Buttons-pallete: (
+    'blue': (
+        'color-1':      $blue-30,
+        'color-2':      $blue-40,
+    ),
+    'green': (
+        'color-1':      $green-30,
+        'color-2':      $green-40,
+    ),
+    'orange': (
+        'color-1':      $orange-30,
+        'color-2':      $orange-40,
+    ),
+    'red': (
+        'color-1':      $red-30,
+        'color-2':      $red-40,
+    ),
+    'white': (
+        'color-1':      $white,
+        'color-2':      $grey-10,
+    ),
+    'black': (
+        'color-1':      $grey-90,
+        'color-2':      $black,
+    ),
+);
+
+$button-padding-x-sm: prx--rem(scale( 'scale-7' ));
+$button-padding-y-sm: scale( 'scale-6' );
+$button-padding-x: prx--rem(scale( 'scale-30' ));
+$button-padding-y: scale( 'scale-15' );
+$button-padding-x-lg: prx--rem(scale( 'scale-30' ));
+$button-padding-y-lg: scale( 'scale-20' );
+$button-border-color: $grey-40;
+$button-border-color-active: $grey-50;
+$button-border-color-focus: $grey-50;
+$button-border-shadow: $grey-30;
+$button-color: $grey-60;
+
+@mixin prx--buttons-coloring(
+    $color-name,
+    $colors
+){
+
+    $light: map-get( $colors, 'color-1' );
+    $dark: map-get( $colors, 'color-2' );
+
+    .button\:#{$color-name}{
+        background-color: $light;
+        border-color: $dark;
+        color: $white;
+
+        &:hover{
+            background-color: $dark;
+        }
+
+        &:active,
+        &:focus{
+            box-shadow: 0 0 0 .15rem mix( white, $dark, 75%);
+        }
+
+        &:disabled{
+            background: mix( white, $light, 60%);
+            border-color: mix( white, $light, 50%);
+            color: mix( white, $light, 90%);
+        }
+    }
+
+    .button\:gradient.button\:#{$color-name}{
+        background: linear-gradient(to bottom, $light, $dark );
+        &:not([disabled]):hover{
+            background: $dark;
+        }
+        &:disabled{
+            background: mix( white, $light, 60%);
+            border-color: mix( white, $light, 50%);
+            color: mix( white, $light, 90%);
+        }
+    }
+
+
+    .button\:outline.button\:#{$color-name}{
+
+        background-color: transparent;
+        border-color: $dark;
+        color: $dark;
+
+        &:not([disabled]):hover{
+            background-color: mix( white, $dark, 95%);
+        }
+
+        &:active,
+        &:focus{
+            box-shadow: 0 0 0 .15rem mix( white, $dark, 75%);
+        }
+
+        &:disabled{
+            border-color: mix( white, $light, 50%);
+            color: mix( white, $light, 60%);
+        }
+    }
+
+    .button\:plain.button\:#{$color-name}{
+        $mix-color: if( $color-name == "white", black, white );
+
+        background-color: transparent;
+        color: $light;
+
+        &:not([disabled]):hover{
+            background-color: mix( $mix-color, $dark, 95%);
+        }
+
+        &:active,
+        &:focus{
+            box-shadow: none;
+        }
+
+        &:disabled{
+            color: mix( white, $light, 60%);
+        }
+    }
+
+}
+
+
+
+.button{
+    background: $grey-10;
+    border: 1px solid $grey-20;
+    color: $grey-70;
+    padding: 9px 14px;
+    outline: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: .9rem;
+    font-weight: 700;
+
+    &:hover{
+        box-shadow: 0 3px 8px $grey-10;
+    }
+
+    &:active{
+        border-color: $grey-30;
+    }
+
+    &:focus{
+        border-color: $grey-30;
+        box-shadow: 0 0 0 .15rem $grey-10;
+    }
+
+    &:disabled{
+        background: $grey-10;
+        color: $grey-40;
+        border-color: $grey-20;
+        cursor: default;
+    }
+
+    .icon{
+
+        &:not(:first-child){
+            margin-left: 15px;
+        }
+        &:not(:last-child){
+            margin-right: 15px;
+        }
+    }
+}
+
+.button\:gradient{
+    background: linear-gradient(to bottom, $grey-10, $grey-20);
+    &:not([disabled]):hover{
+        background: linear-gradient(to bottom, $grey-20, $grey-30);
+    }
+}
+
+.button\:outline{
+    background: transparent;
+
+    &:not([disabled]):hover{
+        background-color: $grey-10;
+    }
+
+    &:disabled{
+        color: $grey-40;
+        border-color: $grey-20;
+    }
+}
+
+.button\:plain{
+    background: transparent;
+    border: none;
+
+    &:disabled{
+        color: $grey-30;
+    }
+}
+
+.button\:is-sm{
+    font-size: .8rem;
+}
+
+.button\:is-lg{
+    font-size: 1.5rem;
+}
+
+@each $name, $colors in $prx--Buttons-pallete{
+    @include prx--buttons-coloring( $name, $colors );
+}

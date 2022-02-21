@@ -1,0 +1,45 @@
+.site-content-team--members-member{
+    border: none;
+    
+    &:hover .site-content-team--members-member-hover{
+        opacity: 1;
+    }
+}
+
+.site-content-team--members-member-image{
+    position: relative;
+    border-color: transparent;
+}
+
+.site-content-team--members-member-hover{
+    position: absolute;
+    bottom: -1px;
+    left: -1px;
+    right: 30px;
+    padding: 18px;
+    background-color: $theme-color-white;
+    opacity: 0;
+    transition: opacity .185s ease-in-out;
+
+    ul{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        li{
+            a svg{
+                fill: $theme-color-black;
+            }
+            a:hover svg{
+                fill: $theme-color-primary;
+            }
+
+            &:not(:last-child){
+                margin-right: 25px;
+            }
+        }
+    }
+}

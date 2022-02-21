@@ -1,0 +1,16 @@
+.site-header-page--hero{
+    position: relative;
+    padding: 45px 0;
+
+    background-position: left center;
+    background-repeat: no-repeat;
+
+    .site-header-page--hero-name{
+        color: $theme-color-gray-600;
+
+    }
+    
+    .site-header-page--hero-introduce{
+        color: $theme-color-gray-500;
+    }
+}

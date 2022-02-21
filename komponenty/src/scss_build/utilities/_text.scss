@@ -1,0 +1,77 @@
+/**
+
+    .text:is-size@breakpoint
+    .text:line-line_height_name_variable@breakpoint
+    .text:is-weight
+    .text:text_decoration
+
+*/
+
+$text-size-max-scale: 8; // Must be even number, half smaller, others larger
+$text-small-max: 3rem;
+$text-large-max: 9rem;
+$text-weights: 300, 400, 500, 700, 800;
+
+@each $breakpoint, $breakpoint-size in $grid-breakpoints{
+    @include media-breakpoint-up( $breakpoint, $grid-breakpoints ){
+        
+        $infix: breakpoint-infix( $breakpoint, $grid-breakpoints );
+        $text-half-size-max-scale: $text-size-max-scale / 2;
+
+        // Smaller sizes
+        @for $i from 1 through 4 {
+            .text\:is-#{$i}#{$infix}{
+                font-size: $i/$text-half-size-max-scale * $text-small-max;
+                line-height: $line-height-base;
+            }
+        }
+
+        // Larger sizes
+        @for $i from 1 through $text-half-size-max-scale{
+
+            $index: $i + $text-half-size-max-scale;
+
+            .text\:is-#{$index}#{$infix}{
+                font-size: 3 + $i/$text-half-size-max-scale * $text-large-max;
+                line-height: $line-height-clasp;
+            }
+        }
+
+        .text\:line-base#{$infix}{
+            line-height: $line-height-base;
+        }
+        .text\:line-clasp#{$infix}{
+            line-height: $line-height-clasp;
+        }
+        .text\:line-clasper#{$infix}{
+            line-height: $line-height-clasper;
+        }
+
+    }
+}
+
+@each $weight in $text-weights{
+    .text\:#{$weight}{
+        font-weight: #{$weight};
+    }
+}
+
+.text\:underline{
+    text-decoration: underline;
+}
+.text\:strike{
+    text-decoration: line-through;
+}
+.text\:bold{
+    font-weight: bold ;
+    font-weight: 700 !important;
+}
+.text\:italic{
+    font-style: italic !important;
+}
+.text\:capitalize{
+    text-transform: capitalize;
+}
+.text\:uppercase{
+    text-transform: uppercase;
+}

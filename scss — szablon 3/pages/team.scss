@@ -1,0 +1,57 @@
+.site-content-team--members-member{
+    position: relative;
+    text-align: center;
+    border: none;
+    
+    &:hover .site-content-team--members-member-hover{
+        opacity: 1;
+    }
+}
+
+.site-content-team--members-member-image{
+    position: relative;
+    border-color: transparent;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.site-content-team--members-member-hover{
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    background-color: $theme-color-white;
+    opacity: 0;
+    transition: opacity .185s ease-in-out;
+
+    ul{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+        li{
+            padding-top: 6px;
+            padding-bottom: 6px;
+
+            a svg{
+                fill: $theme-color-black;
+            }
+            a:hover svg{
+                fill: $theme-color-primary;
+            }
+        }
+    }
+}
+
+.about-team--member-occupation{
+    padding: 6px 16px;
+    background-color: $theme-color-primary;
+    color: $theme-color-white;
+    font-weight: 700;
+}

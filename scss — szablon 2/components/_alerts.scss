@@ -1,0 +1,97 @@
+$alert-pallete: (
+    'blue':     $blue-40,
+    'orange':   $orange-40,
+    'red':      $red-40,
+    'green':    $green-40,
+);
+
+$alert-bg-color: $grey-10;
+$alert-border-color: $grey-20;
+$alert-padding-x: 1.25rem;
+$alert-padding-y: 1rem;
+$alert-border-radius: $border-radius-base;
+$alert-header-font-size: .8rem;
+$alert-color: mix( black, $alert-border-color, 65% );
+$alert-line-height: $line-height-base;
+
+.alert{
+    background-color: $alert-bg-color;
+    border: 1px solid transparent;
+    border-radius: $alert-border-radius;
+    color: $alert-color;
+    line-height: $alert-line-height;
+
+    .alert\:header{
+        width: 100%;
+        letter-spacing: .05rem;
+        padding: $alert-padding-y * 0.67 $alert-padding-x;
+        background-color: $alert-border-color;
+        font-size: $alert-header-font-size;
+        font-weight: 700;
+        color: $alert-color;
+    }
+
+    .alert\:content{
+        padding: $alert-padding-y $alert-padding-x;
+        font-size: $font-size-base;
+
+        a{
+            color: mix( black, $alert-color, 20% );
+            font-weight: inherit;
+            font-size: inherit;
+            text-decoration: underline;
+
+            &:hover{
+                text-decoration: none;
+            }
+        }
+    }
+
+    &.alert\:is-outline{
+        background-color: transparent;
+        border-color: $alert-border-color;
+
+        & .alert\:header{
+            background-color: transparent;
+            color: $alert-color;
+            border-bottom: 1px solid $alert-border-color;
+        }
+    }
+
+}
+
+@each $color-name, $color in $alert-pallete{
+
+    $lightness: mix( white, $color, 80% );
+    $darkness: mix( black, $color, 80% );
+    $text-color: if( luminance($color) < 0.55, $lightness, $darkness );
+    $alert-pallete-border-color: mix( black, $color, 35%);
+
+    .alert\:#{$color-name}{
+        background-color: $color;
+        color: $text-color;
+
+        .alert\:content a{
+            color: $text-color;
+        }
+
+        .alert\:header{
+            background-color: mix(black, $color, 50%);
+            color: $text-color;
+        }
+
+        &.alert\:is-outline{
+            color: $color;
+            border-color: $color;
+
+            .alert\:content a{
+                color: $color;
+            }
+
+            & .alert\:header{
+                color: $color;
+                border-color: $color;
+            }
+        }
+    }
+}

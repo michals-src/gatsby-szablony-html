@@ -1,0 +1,86 @@
+/**
+    .f:d-direction@breakpoint
+    .f:w-wrap@breakpoint
+    .f:jc-justify_content@breakpoint
+    .f:ac-align_content@breakpoint
+    .f:ai-align_items@breakpoint
+    .f:as-align_self@breakpoint
+*/
+
+$flex-direction-values: row, column, column-reverse, row-reverse;
+$flex-wrap-values: wrap, wrap-reverse, nowrap;
+$justify-content-values: flex-start, flex-end, center, space-between, space-around, space-evenly;
+$align-content-values: flex-start, flex-end, center, space-between, space-around, space-evenly, stretch, baseline;
+$align-items-values: stretch, flex-start, flex-end, center, baseline;
+$align-self-values: auto, stretch, flex-start, flex-end, center, baseline;
+$order: 10;
+
+@each $breakpoint, $breakpoint-size in $grid-breakpoints{
+    $infix: breakpoint-infix( $breakpoint, $grid-breakpoints);
+    
+    @include media-breakpoint-up( $breakpoint, $grid-breakpoints ){
+
+        @each $value in $flex-direction-values{
+            .flex-fd-#{$value}#{$infix}{
+                flex-direction: $value;
+            }
+        }
+
+        @each $value in $flex-wrap-values{
+            .flex-fw-#{$value}#{$infix}{
+                flex-wrap: $value;
+            }
+        }
+
+        @each $value in $justify-content-values{
+            .flex-jc-#{$value}#{$infix}{
+                justify-content: $value;
+            }
+        }
+
+        @each $value in $align-content-values{
+            .flex-ac-#{$value}#{$infix}{
+                align-content: $value;
+            }
+        }
+
+        @each $value in $align-items-values{
+            .flex-ai-#{$value}#{$infix}{
+                align-items: $value;
+            }
+        }
+
+        @each $value in $align-self-values{
+            .flex-as-#{$value}#{$infix}{
+                align-self: $value;
+            }
+        }
+
+        .flex-grow0#{$infix}{
+            flex-grow: 0;
+        }
+        .flex-grow1#{$infix}{
+            flex-grow: 1;
+        }
+        .flex-shrink0#{$infix}{
+            flex-shrink: 0;
+        }
+        .flex-shrink1#{$infix}{
+            flex-shrink: 1;
+        }
+
+        .flex-is-first#{$infix}{
+            order: -1;
+        }
+        .flex-is-last#{$infix}{
+            order: 9999;
+        }
+
+        @for $i from 0 through $order{
+            .flex-is-#{$i}#{$infix}{
+                order: $i;
+            }
+        }
+
+    }
+}

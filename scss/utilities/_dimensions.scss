@@ -1,0 +1,167 @@
+/**
+
+    width
+    height
+
+    .w\:is-n: 1840px / n
+    .w\:is-25: 25%
+    .w\:is-50: 50%;
+    .w\:is-75: 75%;
+    .w\:is-100
+    .w\:auto
+    .w\:min-n: 1840px / n
+    .w\:max-n: 1840px / n
+    .w\:vw: 100vw
+    .w\:vw-n: 100vw / n
+
+    .h\:is-n: 785px / n
+
+*/
+
+$container-width-sm: $breakpoint-sm - ($container-gap * 2);
+$container-width-md: $breakpoint-md - ($container-gap * 2);
+$container-width-lg: $breakpoint-lg - ($container-gap * 2);
+$container-width-xl: $breakpoint-xl - ($container-gap * 2);
+$container-width-xxl: $breakpoint-xxl - ($container-gap * 2);
+$container-width-3xl: $breakpoint-3xl - ($container-gap * 2);
+
+$width-breakpoints: (
+    'sm':   $container-width-sm,
+    'md':   $container-width-md,
+    'lg':   $container-width-lg,
+    'xl':   $container-width-xl,
+    'xxl':   $container-width-xxl,
+    '3xl':   $container-width-3xl
+) !default;
+
+
+@each $width-name, $width-value in $width-breakpoints{
+
+    $index: index( map-keys($width-breakpoints), $width-name );
+
+    // For XS breakpoint each of width is 100%
+
+    .w#{$index},
+    .w#{$index}-min,
+    .w#{$index}-max{
+        width: 100%;
+    }
+
+    // Wszystkie szerokości są dostępne od minimalnej wartości md
+    @include media-breakpoint-up( 'md', $grid-breakpoints ){
+        .w#{$index}{
+            width: $width-value;
+        }
+        .w#{$index}-min{
+            min-width: $width-value;
+        }
+        .w#{$index}-max{
+            max-width: $width-value;
+        }
+    }
+
+    // Dodanie responsywaności
+    @each $breakpoint, $breakpoint-size in $grid-breakpoints{
+        // Uniknięcie nadpisania klasy bez $infix w przypadku, gdy $breakpoint == xs
+        @if $breakpoint != "xs" {
+            @include media-breakpoint-up( $breakpoint, $grid-breakpoints ){
+                $infix: breakpoint-infix( $breakpoint, $grid-breakpoints);
+
+                .w#{$index}#{$infix}{
+                    width: $width-value;
+                }
+                .w#{$index}-min#{$infix}{
+                    min-width: $width-value;
+                }
+                .w#{$index}-max#{$infix}{
+                    max-width: $width-value;
+                }
+        
+            }
+        }
+    }
+}
+
+
+@each $breakpoint, $breakpoint-size in $grid-breakpoints{
+    @include media-breakpoint-up( $breakpoint, $grid-breakpoints ){
+
+        $infix: breakpoint-infix( $breakpoint, $grid-breakpoints);
+        $width-value: $breakpoint-size;
+
+
+        @for $i from 1 through 8{
+            $height-value: floor($i / 8 * 800px);
+
+            .h#{$i}#{$infix}{
+                height: $height-value;
+            }
+            .h#{$i}-min#{$infix}{
+                min-height: $height-value;
+            }
+            .h#{$i}-max#{$infix}{
+                max-height: $height-value;
+            }
+        }
+
+        @for $i from 1 through 10{
+            $width-value: $i / 10 * 100vw;
+            $height-value: $i / 10 * 100vh;
+            
+            $item-class-index: 10 * $i;
+
+            .w#{$item-class-index}-ww#{$infix}{
+                width: calc(#{$width-value});
+            }
+            .w#{$item-class-index}-min-ww#{$infix}{
+                min-width: calc(#{$width-value});
+            }
+            .w#{$item-class-index}-max-ww#{$infix}{
+                max-width: calc(#{$width-value});
+            }
+
+           
+            .h#{$item-class-index}-wh#{$infix}{
+                height: calc(#{$height-value});
+            }
+            .h#{$item-class-index}-min-wh#{$infix}{
+                min-height: calc(#{$height-value});
+            }
+            .h#{$item-class-index}-max-wh#{$infix}{
+                max-height: calc(#{$height-value});
+            }
+        }
+
+        .w25#{$infix}{
+            width: 25%;
+        }
+        .w50#{$infix}{
+            width: 50%;
+        }
+        .w75#{$infix}{
+            width: 75%;
+        }
+        .w100#{$infix}{
+            width: 100%;
+        }
+        .w-auto#{$infix}{
+            width: auto;
+        }
+        
+        .h25#{$infix}{
+            height: 25%;
+        }
+        .h50#{$infix}{
+            height: 50%;
+        }
+        .h75#{$infix}{
+            height: 75%;
+        }
+        .h100#{$infix}{
+            height: 100%;
+        }
+        .h-auto#{$infix}{
+            height: auto;
+        }
+    }
+}

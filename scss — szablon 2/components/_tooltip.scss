@@ -1,0 +1,92 @@
+$tooltip-background-color: $grey-80;
+
+.tooltip{
+    position: relative;
+    cursor: pointer;
+    @include zIndex('content');
+
+    &::after{
+        content: attr(aria-label);
+        position: absolute;
+        padding: 6px 14px;
+        font-size: .85rem;
+        background-color: $tooltip-background-color;
+        color: $grey-20;
+        border-radius: 5px;
+        display: none;
+        white-space: pre;
+        z-index: 1;
+    }
+
+    &::before{
+        content: "";
+        @include caret();
+        z-index: 1;
+    }
+
+
+    &.tooltip\:is-top{
+        &::before{
+            @include caret-bottom();
+            position: absolute;
+            top: -4px;
+            left: calc( 50% - 5px );
+        }
+        &::after{
+            top: -30px;
+            transform: translateX(-50%);
+            left: 50%;
+        }
+    }
+
+    &.tooltip\:is-bottom{
+        &::before{
+            @include caret-top();
+            position: absolute;
+            bottom: -4px;
+            left: calc( 50% - 5px );
+        }
+        &::after{
+            bottom: -30px;
+            transform: translateX(-50%);
+            left: 50%;
+        }
+    }
+
+    &.tooltip\:is-left{
+        &::before{
+            @include caret-right();
+            position: absolute;
+            left: -10px;
+            top: calc( 50% - 5px );
+        }
+        &::after{
+            top: 50%;
+            transform: translateX(-100%) translateY(-50%);
+            left: -10px;
+        }
+    }
+
+    &.tooltip\:is-right{
+        &::before{
+            @include caret-left();
+            position: absolute;
+            right: -10px;
+            top: calc( 50% - 5px );
+        }
+        &::after{
+            top: 50%;
+            transform: translateX(100%) translateY(-50%);
+            right: -10px;
+        }
+    }
+
+    &:hover{
+        &::before{
+            display: block;
+        }
+        &::after{
+            display: inline-block;
+        }
+    }
+}

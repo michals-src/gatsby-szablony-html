@@ -1,0 +1,39 @@
+/**
+
+    ======== BORDER RADIUS ========
+    .b-radius:is-radius@breakpoint
+        radius range 1-4
+
+    (TO DO) pillow
+
+*/
+
+@each $breakpoint, $breakpoint-size in $grid-breakpoints{
+    $infix: breakpoint-infix( $breakpoint, $grid-breakpoints, "\\@" );
+    
+    @include media-breakpoint-up( $breakpoint, $grid-breakpoints ){
+
+        @for $i from 0 through 4{
+            .b-radius\:is-#{$i}#{$infix}{
+                border-radius: $i / 4 * 16px; 
+            }
+            .b-radius\:top-#{$i}#{$infix}{
+                border-top-left-radius: $i / 4 * 16px; 
+                border-top-right-radius: $i / 4 * 16px; 
+            }
+            .b-radius\:bottom-#{$i}#{$infix}{
+                border-bottom-left-radius: $i / 4 * 16px; 
+                border-bottom-right-radius: $i / 4 * 16px; 
+            }
+            .b-radius\:left-#{$i}#{$infix}{
+                border-top-left-radius: $i / 4 * 16px; 
+                border-bottom-left-radius: $i / 4 * 16px; 
+            }
+            .b-radius\:right-#{$i}#{$infix}{
+                border-top-right-radius: $i / 4 * 16px; 
+                border-bottom-right-radius: $i / 4 * 16px; 
+            }
+        }
+
+    }
+}

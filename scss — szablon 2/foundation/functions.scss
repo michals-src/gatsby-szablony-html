@@ -1,0 +1,85 @@
+$escaped-characters: (
+("<", "%3c"),
+(">", "%3e"),
+("#", "%23"),
+("(", "%28"),
+(")", "%29"),
+) !default;
+
+@function str-replace($string, $search, $replace: "") {
+$index: str-index($string, $search);
+
+@if $index {
+    @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+}
+
+@return $string;
+}
+
+// See https://codepen.io/kevinweber/pen/dXWoRw
+//
+// Requires the use of quotes around data URIs.
+
+@function escape-svg($string) {
+@if str-index($string, "data:image/svg+xml") {
+    @each $char, $encoded in $escaped-characters {
+    // Do not escape the url brackets
+    @if str-index($string, "url(") == 1 {
+        $string: url("#{str-replace(str-slice($string, 6, -3), $char, $encoded)}");
+    } @else {
+        $string: str-replace($string, $char, $encoded);
+    }
+    }
+}
+
+@return $string;
+}
+
+@function prx--rem($px){
+    @return ($px / $font-size-base ) * 1rem;
+}
+
+@function prx--em($px){
+    @return ($px / $font-size-base ) * 1em;
+}
+
+@function pow($number, $exponent) {
+    $value: 1;
+  
+    @if $exponent > 0 {
+      @for $i from 1 through $exponent {
+        $value: $value * $number;
+      }
+    }
+  
+    @return $value;
+  }
+
+/// Returns the luminance of `$color` as a float (between 0 and 1)
+/// 1 is pure white, 0 is pure black
+/// @param {Color} $color - Color
+/// @return {Number}
+/// @link http://www.w3.org/TR/2008/REC-WCAG20-20081211/#relativeluminancedef Reference
+@function luminance($color) {
+    $colors: (
+      'red': red($color),
+      'green': green($color),
+      'blue': blue($color)
+    );
+  
+    @each $name, $value in $colors {
+      $adjusted: 0;
+      $value: $value / 255;
+  
+      @if $value < 0.03928 {
+        $value: $value / 12.92;
+      } @else {
+        $value: ($value + .055) / 1.055;
+        $value: pow($value, 2);
+      }
+  
+      $colors: map-merge($colors, ($name: $value));
+    }
+  
+    @return (map-get($colors, 'red') * .2126) + (map-get($colors, 'green') * .7152) + (map-get($colors, 'blue') * .0722);
+  }

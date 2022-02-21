@@ -1,0 +1,28 @@
+$spacing-properties: (
+    margin-top: 'mt',
+    margin-right: 'mr',
+    margin-bottom: 'mb',
+    margin-left: 'ml',
+    padding-top: 'pt',
+    padding-right: 'pr',
+    padding-bottom: 'pb',
+    padding-left: 'pl',
+    padding: 'p',
+);
+
+$spacing-default: 16px;
+
+@mixin prx--make-spacing-finally(){
+
+    @each $property, $shorthand in $spacing-properties{
+        @each $name, $scale in $scale-map{
+            $spacing-index: index(map-keys($scale-map), $name);
+            .#{$prefix}--#{$shorthand}-#{$spacing-index}{
+                #{$property}: prx--rem($spacing-default * $scale);
+            }
+        }
+    }
+
+}
+
+@include prx--make-spacing-finally();

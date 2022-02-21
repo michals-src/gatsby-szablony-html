@@ -1,0 +1,43 @@
+$prefix: 'prefix' !default;
+
+@import './foundation/colors';
+
+$breakpoint-xs: 0;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1280px;
+$breakpoint-xxl: 1458px;
+$breakpoint-3xl: 1840px;
+
+//Breakpoints
+$grid-breakpoints: (
+    'xs':   $breakpoint-xs,
+    'sm':   $breakpoint-sm,
+    'md':   $breakpoint-md,
+    'lg':   $breakpoint-xl,
+    'xl':   $breakpoint-xxl,
+    '3xl':   $breakpoint-3xl,
+) !default;
+
+
+$theme-font-family: Catamaran, Yantramanav, 'Open Sans', Palanquin, Lato, Roboto, Poppins, sans-serif;
+$theme-font-family-monospace-base: 'JetBrains Mono', 'Courier Prime', 'IBM Plex Mono', 'Roboto Mono', monospace;
+$theme-color: $grey-90;
+
+
+$font-size-base: 1rem !default;
+$line-height-base: 1.5;
+$line-height-clasp: 1.25;
+$line-height-clasper: 1;
+$link-color-base: $blue-30;
+
+
+
+$grid-columns: 12 !default;
+$grid-gap: 15px !default;
+
+$container-gap: $grid-gap;
+
+$border-color-base: $grey-40;
+$border-radius-base: .25rem !default;

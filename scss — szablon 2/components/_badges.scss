@@ -1,0 +1,59 @@
+$badge-pallete: (
+    'blue':     $blue-40,
+    'orange':   $orange-40,
+    'red':      $red-40,
+    'green':    $green-40,
+);
+
+$badge-min-width: 1rem;
+$badge-font-size: .875rem;
+$badge-font-weight: 700;
+$badge-border-radius: 2rem;
+$badge-border-color: $grey-30;
+$badge-background-color: mix(white, $grey-20, 25%);
+$badge-color: $grey-60;
+$badge-padding-x: .5rem;
+$badge-padding-y: .15rem;
+$badge-letter-spacing: .05rem;
+$badge-line-height: $line-height-clasper;
+
+.badge{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    min-width: $badge-min-width;
+    border-radius: $badge-border-radius;
+    border: 1px solid transparent;
+    background-color: $badge-background-color;
+    padding: $badge-padding-y $badge-padding-x;
+    letter-spacing: $badge-letter-spacing;
+    font-size: $badge-font-size;
+    font-weight: $badge-font-weight;
+    line-height: $badge-line-height;
+    color: $badge-color;
+
+    &.badge\:is-outline{
+        background-color: transparent;
+        border-color: $badge-border-color;
+    }
+}
+
+@each $color-name, $color in $badge-pallete{
+
+    $lightness: mix( white, $color, 80% );
+    $darkness: mix( black, $color, 80% );
+    $text-color: if( luminance($color) < 0.55, $lightness, $darkness );
+
+    .badge\:#{$color-name}{
+        background-color: $color;
+        color: $text-color;
+
+        &.badge\:is-outline{
+            background-color: transparent;
+            color: $color;
+            border-color: $color;
+        }
+    }
+}

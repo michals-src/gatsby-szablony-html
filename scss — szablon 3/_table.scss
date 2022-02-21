@@ -1,0 +1,81 @@
+.table{
+    width: 100%;
+    color: $grey-80;
+    background-color: $white;
+    
+    th,td{
+        border: 1px solid $grey-40;
+        border-width: 0 0 1px;
+        padding: 8px 14px;
+        color: inherit;
+    }
+
+    thead,
+    tbody{
+        vertical-align: top;
+    }
+
+    thead{
+        tr:last-child{
+            th,td{
+                border-bottom-width: 2px;
+            }
+        }
+    }
+
+    tfoot{
+        tr:first-child{
+            th,td{
+                border-top-width: 2px;
+            }
+        }
+    }
+
+    tbody{
+        tr:last-child{
+            th,td{
+                border-color: transparent;
+            }
+        }
+    }
+    
+    &.table\:striped{
+        tbody{
+            tr:nth-child(even){
+                background-color: $grey-10;
+            }
+        }
+    }
+
+    &.table\:striped-horizontal{
+        tbody{
+            th,td{
+                &:nth-child(even){
+                    background-color: $grey-10;
+                }
+            }
+        }
+    }
+
+
+    &.table\:hoverable{
+        tbody{
+            tr:hover{
+                background-color: $grey-20;
+            }
+        }
+    }
+
+    &.table\:border{
+        th,td{
+            border-width: 1px;
+        }
+
+        tr:last-child{
+            th,td{
+                border-color: $grey-40;
+            }
+        }
+    }
+
+}

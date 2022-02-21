@@ -1,0 +1,30 @@
+.site-header-hero--page{
+    position: relative;
+    width: 100%;
+    color: $white;
+    background-color: $hero-color-background;
+    @include zIndex();
+    margin-bottom: 50px;
+}
+
+.site-header-hero--page-image{
+    width: 100%;
+    position: absolute;
+    left: 0;
+    height: 450px;
+    overflow: hidden;
+    padding-left: 9rem;
+
+    img{
+        width: 100%;
+    }
+}
+
+.site-header-hero--page-content{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    height: 400px;
+}

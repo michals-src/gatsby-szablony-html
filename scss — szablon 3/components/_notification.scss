@@ -1,0 +1,125 @@
+$notification-bg: $white;
+$notification-color: $grey-80;
+$notification-font-size: 15px;
+$notification-padding-x: 15px;
+$notification-padding-y: 15px;
+$notification-gap: 15px;    // When is floating
+$notification-border-radius: 4px;
+$notification-border-color: $grey-30;
+$notification-positions: (
+    'top': top,
+    'bottom': bottom,
+    'top-left': top left,
+    'top-right': top right,
+    'bottom-left': bottom left,
+    'bottom-right': bottom right,
+
+);
+$alert-pallete: (
+    'blue':     $blue-40,
+    'orange':   $orange-40,
+    'red':      $red-40,
+    'green':    $green-40,
+);
+
+.notification{
+    width: 100%;
+    display: flex;
+    align-items: stretch;
+    border-radius: $notification-border-radius;
+    border: 1px solid $notification-border-color;
+    font-size: $notification-font-size;
+    background-color: $notification-bg;
+    color: $notification-color;
+    line-height: $line-height-clasp;
+
+    &.notification\:-left{
+        border-left-width: 4px;
+    }
+    &.notification\:-right{
+        border-right-width: 4px;
+    }
+    &.notification\:-top{
+        border-top-width: 4px;
+    }
+    &.notification\:-bottom{
+        border-bottom-width: 4px;
+    }
+    &.notification\:-icon .notification\:icon{
+        background: $grey-30;
+    }
+}
+
+.notification\:icon{
+    display: flex;
+    align-items: baseline;
+    padding: $notification-padding-y 15px;
+    background-color: $notification-bg;
+}
+
+.notification\:header{
+    display: flex;
+    padding: $notification-padding-y $notification-padding-x;
+
+    .notification\:heading{
+        flex: auto;
+        font-weight: 700;
+    }
+}
+
+.notification\:content{
+    flex: auto;
+    &:first-child{
+        padding: $notification-padding-y $notification-padding-x;
+    }
+    &:not(:first-child){
+        padding-left:$notification-padding-x;
+        padding-right: $notification-padding-x;
+        padding-bottom: $notification-padding-y;
+    }
+}
+
+@each $name, $positions in $notification-positions{
+    @each $position in $positions{
+        .notification\:is-#{$name}{
+            width: auto;
+            position: absolute;
+            
+            @if length($positions) > 1{
+                max-width: 400px;
+                #{$position}: $notification-gap;
+            }@else{
+                #{$position}: $notification-gap;
+                left: $notification-gap;
+                right: $notification-gap;
+            }
+
+            @include zIndex('float');
+        }
+    }
+
+    @include media-until( $breakpoint-md ){
+        .notification\:is-#{$name}{
+            $vertical: if( index($positions, bottom) != null, bottom, top );
+            
+            max-width: 100%;
+            #{$vertical}: 0;
+            left: 0;
+            right: 0;
+            border-radius: 0;
+        }
+    }
+}
+
+@each $color-name, $color in $alert-pallete{
+    .notification{
+        &.notification\:#{$color-name}{
+            border-color: $color;
+        }
+        &.notification\:#{$color-name}.notification\:-icon .notification\:icon{
+            background-color: $color;
+            fill: $white;
+            color: $white;
+        }
+    }
+}

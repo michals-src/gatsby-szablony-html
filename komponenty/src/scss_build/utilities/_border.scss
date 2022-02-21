@@ -1,0 +1,42 @@
+/**
+    .bo:color: color pallete
+    .bo:w-n -- border-width: n
+    .bo:style: solid dashed double dotted
+
+*/
+
+@for $i from 1 through 6{
+    .border\:is-#{$i}{
+        border-width: floor($i / 6 * 6px);
+        border-style: solid;
+        border-color: $border-color-base;
+    }
+}
+
+$border-styles: none, solid, dashed, dotted, double, groove;
+@each $style in $border-styles{
+    .border\:#{$style}{
+        border-style: #{$style};
+    }
+}
+
+$colors-pallete-mix: map-merge($colors-pallete-mix, (
+    'white': $white,
+    'black': $black,
+));
+
+@each $name, $colors in $colors-pallete-mix{
+
+    @if length($colors) > 1 {
+        @for $i from 1 through 9{
+            .border\:#{$name}-#{$i}{
+                border-color: nth($colors, $i);
+            }
+        }
+    }@else{
+        .border\:#{$name}{
+            background-color: nth($colors, 1);
+        }
+    }
+
+}

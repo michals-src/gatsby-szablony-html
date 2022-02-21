@@ -1,0 +1,140 @@
+.site-header-hero--main{
+    position: relative;
+    width: 100%;
+    @include zIndex();
+    color: $white;
+
+    .site-header-hero--main-list{
+        display: block;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        li{
+            background-size: cover;
+            background-position: center center;
+            width: 100%;
+            height: calc(100vh - #{$navbar-padding-y + $navbar-height});
+        }
+    }
+    
+    .site-header-hero--main-text{
+        height: calc(100vh);
+    }
+
+    .site-header-hero--main-nav{
+        position: absolute;
+        bottom: 50px;
+        left: 15px;
+        right: 15px;
+        display: flex;
+        justify-content: space-between;
+        
+        @include media-from($breakpoint-lg){
+            &{
+                left: -32px;
+                right: -32px;
+            }
+        }
+    }
+    
+    .site-header-hero--main-nav-item{
+        cursor: pointer;
+        
+        
+        &[data-direction="prev"]{
+            margin-left: 0;
+            transition: margin-left .3s cubic-bezier(0.48, 0.32, 0, 0.83);
+            &:hover{
+                margin-left: 10px;
+            }
+        }
+
+        &[data-direction="next"]{
+            margin-right: 0;
+            transition: margin-right .3s cubic-bezier(0.48, 0.32, 0, 0.83);
+            &:hover{
+                margin-right: 10px;
+            }
+        }
+    }
+}
+
+.site-content-main--features{
+    .site-content-main--features-item{
+        position: relative;
+        
+        .icon{
+            margin-bottom: 16px;
+            svg{
+                fill: $theme-color-primary;
+            }
+        }
+    }
+
+}
+
+.site-content-services--details{
+    width: 100%;
+    overflow: hidden;
+
+    .site-content-services--details-container{
+        position: relative;
+    }
+    
+    // .site-content-services--details-items{
+
+    // }
+
+    .site-content-services--details-image{
+        display: none;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 0 30px 30px 0;
+
+        img{
+            border-radius: 0 30px 30px 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            margin-left: auto;
+            object-fit: cover;
+
+            @include media-from( $breakpoint-lg ){
+                &{
+                    height: auto;
+                }
+            }
+        }
+
+        @include media-from( $breakpoint-md ){
+            &{
+                display: block;
+            }
+        }
+    }
+
+    .icon svg{
+        fill: $theme-color-primary;
+    }
+}
+
+
+
+.site-content-about--steps-item{
+    color: $theme-color-gray-500;
+    padding: 35px 45px;
+    text-align: center;
+
+    .badge{
+        background-color: $theme-color-primary;
+        color: $theme-color-white;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 15px;
+    }
+}

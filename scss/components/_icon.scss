@@ -1,0 +1,39 @@
+.icon{
+    width: 24px;
+    height: 24px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    &.icon\:has-space{
+        margin-right: 10px;
+    }
+}
+
+.icon-absolute{
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    top: 0;
+}
+
+.icon16{
+    width: 16px;
+    height: 16px;
+}
+.icon18{
+    width: 18px;
+    height: 18px;
+}
+.icon32{
+    width: 32px;
+    height: 32px;
+}
+.icon64{
+    width: 64px;
+    height: 64px;
+}
+.icon128{
+    width: 128px;
+    height: 128px;
+}

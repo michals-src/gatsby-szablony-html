@@ -1,0 +1,47 @@
+$form-label-margin-y: .4rem;
+$form-label-margin-x: .1rem;
+$form-label-font-size: $font-size-base * .9rem;
+$form-label-font-weight: 700 !default;
+$form-label-color: $grey-90;
+
+$form-text-line-font-size: $font-size-base * .9;
+$form-text-line-color: $grey-70;
+$form-text-line-margin-y: $form-label-margin-y * .85;
+$form-text-line-margin-x: $form-label-margin-x;
+
+
+.form\:label{
+    display: block;
+    margin-bottom:$form-label-margin-y;
+    margin-left: $form-label-margin-x;
+    font-weight: $form-label-font-weight;
+    color: $form-label-color;
+
+    &:not(:first-child){
+        margin-top: $form-label-margin-y;
+    }
+}
+
+.form\:help-line{
+    font-size: $form-text-line-font-size;
+    color: $form-text-line-color;
+    margin-top: $form-text-line-margin-y;
+    margin-left: $form-text-line-margin-x;
+
+    &:not(:last-child){
+        margin-bottom: $form-text-line-margin-y;
+    }
+
+    &.form\:is-feedback{
+        display: flex;
+        flex-direction: column;
+        flex: 0 0 auto;
+        width: 100%;
+    }
+}
+
+
+.form\:heading{
+    margin-left: $form-text-line-margin-x;
+    display: block;
+}

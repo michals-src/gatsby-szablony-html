@@ -1,0 +1,76 @@
+.modal{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    overflow: hidden;
+    @include zIndex('float');
+
+}
+
+.modal\:curtain{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-color: $black;
+    opacity: .5;
+}
+
+.modal\:card{
+    background-color: $white;
+    position: relative;
+    max-width: $breakpoint-md;
+    max-height: calc(100vh - 50px);
+    margin: 0 auto;
+    box-shadow: 0 15px 30px rgba(0,0,0,.3);
+    border-radius: 5px;
+    z-index: 99999999;
+}
+
+.modal\:card-heading{
+    font-size: 1.1rem;
+    font-weight: 700;
+    padding: 24px 25px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+
+    &.is-separated{
+        border-bottom: 1px solid $grey-30;
+    }
+
+    .modal-close {
+        text-align: center;
+        margin-left: auto;
+        padding-left: 15px;
+    }
+}
+
+.modal\:card-content{
+    padding: 11px 25px;
+    overflow: auto;
+}
+.modal\:card-footer{
+    padding: 24px 25px;
+
+    &.is-separated{
+        border-top: 1px solid $grey-30;
+    }
+}
+
+@include media-until($breakpoint-md){
+    .modal\:card{
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}

@@ -1,0 +1,115 @@
+.site-content-about--mission-wrapper{
+    background-color: $white;
+}
+
+
+.site-content-about--colaboration{
+    position: relative;
+    padding-top: 5rem;
+    @include zIndex();
+}
+
+.site-content-about--colaboration-image{
+    height: 100%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: $theme-color-gray-100;
+    overflow: hidden;
+
+    img{
+        width: 100%;
+    }
+}
+
+.site-content-about--colaboration-content{
+    position: relative;
+    z-index: 1;
+    margin-left: auto;
+    background-color: $theme-color-white;
+}
+
+
+
+.site-icon-medium{
+    width: 48px;
+    height: 48px;
+    fill: $grey-60;
+}
+
+.site-content-about--team-member{
+    background: transparent;
+    border: none;
+}
+
+.site-content-about--team-member-image{
+    height: 360px;
+    overflow: hidden;
+    margin-bottom: 18px;
+    border-radius: 10px;
+
+    & img{
+        object-fit: cover;
+        height: 458px;
+    }
+}
+
+.site-section-promo--image{
+    overflow: hidden;
+    border-radius: 9px;
+
+    img{
+        object-fit: cover;
+        width: 100%;
+    }
+}
+
+.site-content-about--team-member{
+    .badge{
+        padding: 6px 10px 3px 10px;
+        background-color: $theme-color-primary;
+        color: #fff;
+    }
+}
+
+.site-content-about--team-member-socials-item{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+
+    svg{
+        width: 1em;
+        height: 1em;
+        fill: $theme-color-primary;
+    }
+    
+    &:not(:last-child){
+        margin-right: 14px;
+    }
+
+    &:hover{
+        svg{
+            fill: $theme-color-gray-400;
+        }
+    }
+}
+
+.site-section-promo--list-icon{
+    width: 32px;
+    height: 32px;
+    margin-right: 12px;
+}
+
+.about-mission--story{
+    background: $theme-color-primary;
+    color: $theme-color-white;
+    border-radius: 10px;
+}
+
+.about-mission--story-plain{
+    border: 1px solid $theme-color-gray-200;
+    border-radius: 10px;
+}
+

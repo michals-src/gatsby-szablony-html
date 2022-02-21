@@ -1,0 +1,78 @@
+$form-file-bg:  $form-input-border-color;
+$form-file-hover-bg:  mix( black, $form-input-border-color, 15%);
+$form-file-color: $white;
+$form-file-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' stroke='#{$white}' fill='#{$white}' id='e6ca2f27-0136-4d28-89ce-fa555d4bcf8f' data-name='Warstwa 3' viewBox='0 0 24 24'><path d='M20.74,19.75H3.26a1.63,1.63,0,0,1-1.62-1.62v-4H3.26v4H20.74v-4h1.62v4A1.63,1.63,0,0,1,20.74,19.75Z'/><polygon points='17.18 9.56 11.87 4.25 6.55 9.56 7.7 10.71 11.05 7.36 11.05 15.62 12.68 15.62 12.68 7.36 16.03 10.71 17.18 9.56'/></svg>");
+$form-file-icon-left: 14px;
+$form-file-padding-left: $form-file-icon-left * 2 + 18px;
+
+.form\:file{
+    position: relative;
+    width: 100%;
+    @include zIndex('content');
+}
+
+.form\:file-label{
+    position: relative;
+    width: 100%;
+    outline: none;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: $form-file-padding-left;
+    padding-right: 8px;
+    border: 1px solid $form-input-border-color;
+    border-radius: $form-input-border-radius;
+    background: $form-file-bg;
+    color: $form-file-color;
+    font-size: $form-input-font-size;
+    cursor: pointer;
+    z-index: -1;
+
+    &::before{
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background-image: escape-svg($form-file-icon);
+        background-size: 18px 18px;
+        background-position: left $form-file-icon-left center;
+        background-repeat: no-repeat;
+    }
+}
+
+.form\:file-input{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+    visibility: visible;
+    cursor: pointer;
+    z-index: 1;
+
+    &:hover{
+        & + .form\:file-label{
+            background-color: $form-file-hover-bg;
+        }
+    }
+
+    &:focus{
+        @include zIndex('content');
+        & + .form\:file-label{
+            border-color: $form-input-border-color-focus;
+            @if ($form-input-shadow-enabled == true){
+                box-shadow: 0 0 0 0.15rem $form-input-box-shadow-focus;
+            }
+        }
+    }
+
+    &:disabled{
+        .form\:file-labe{
+            background-color: $form-input-background-color-disabled;
+            border-color: $form-input-border-color-disabled;
+            color: $form-input-color-disabled;
+        }
+    }
+}

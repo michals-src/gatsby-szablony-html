@@ -1,0 +1,68 @@
+.dropdown{
+    position: relative;
+
+    .dropdown\:button{
+        padding-right: 38px;
+        background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g id='a541df50-fd9e-4caa-a0b0-88989a27c682' data-name='Warstwa 6'><polygon points='12 15.53 5.65 9.18 6.35 8.47 12 14.12 17.65 8.47 18.35 9.18 12 15.53'/></g></svg>"));
+        background-repeat: no-repeat;
+        background-position: right 11px center;
+        background-size: 18px 18px;
+    }
+
+    .dropdown\:menu{
+        padding: 10px 0;
+        margin: 5px 0 0 0;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: $white;
+        border: 1px solid $grey-30;
+        border-radius: 3px;
+        box-shadow: 0 4px 10px rgba(90, 71, 71, 0.15);
+        list-style: none;
+
+        li{
+            margin: 0;
+        }
+
+        &.has-dividers .dropdown\:item:not(:last-child){
+            border-bottom: 1px solid $grey-30;
+        }
+    }
+
+    .dropdown\:item{
+        display: block;
+        margin: 0;
+        padding: 7px 15px;
+        color: $grey-70;
+        background-color: transparent;
+        cursor: pointer;
+        font-size: .95rem;
+
+        &:hover{
+            background-color: $grey-10;
+        }
+    }
+
+    .dropdown\:divider{
+        margin: 5px 0;
+        width: 100%;
+        height: 1px;
+        background-color: $grey-30;
+        display: block;
+
+        & + .dropdown\:label{
+            margin-top: 15px;
+        }
+    }
+
+    .dropdown\:label{
+        padding: 0 15px;
+        margin-top: 3px;
+        margin-bottom: 7px;
+        font-size: .8rem;
+        color: $grey-50;
+        letter-spacing: .05rem;
+        font-weight: 700;
+    }
+}

@@ -1,0 +1,24 @@
+*{
+    box-sizing: border-box;
+}
+
+body{
+    background-color: $white;
+    font-family: $theme-font-family;
+    color: $theme-color;
+}
+
+p{
+    margin-top: 0;
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+textarea{
+    resize: vertical;
+}
+
+table{
+    border-collapse: collapse;
+    border-spacing: 0;
+}

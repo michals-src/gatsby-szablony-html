@@ -1,0 +1,31 @@
+/**
+    .bg:color-luminace  #Background color
+    .t:color-luminace   #Text color
+*/
+
+$colors-pallete-mix: map-merge($colors-pallete-mix, (
+    'white': $white,
+    'black': $black,
+));
+
+@each $name, $colors in $colors-pallete-mix{
+
+    @if length($colors) > 1 {
+        @for $i from 1 through 9{
+            .bg\:#{$name}-#{$i}{
+                background-color: nth($colors, $i);
+            }
+            .t\:#{$name}-#{$i}{
+                color: nth($colors, $i);
+            }
+        }
+    }@else{
+        .bg\:#{$name}{
+            background-color: nth($colors, 1);
+        }
+        .t\:#{$name}{
+            color: nth($colors, 1);
+        }
+    }
+
+}

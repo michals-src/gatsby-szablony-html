@@ -1,0 +1,37 @@
+.site-content-portfolio--card-image{
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+
+    img{
+        width: 100%;
+    }
+
+    &:hover .site-content-portfolio--card-image-hover{
+        opacity: 1;
+    }
+}
+
+.site-content-portfolio--card-image-hover{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: rgba( #000, .7 );
+    opacity: 0;
+    transition: opacity .4s ease-in-out;
+
+    svg{
+        fill: $theme-color-white;
+    }
+}
+
+.site-content-portfolio--card-info{
+    color: $theme-color-gray-200;
+}

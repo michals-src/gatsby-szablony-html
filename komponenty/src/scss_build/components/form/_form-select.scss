@@ -1,0 +1,49 @@
+$select-caret: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' stroke='#{$form-input-border-color}' viewBox='0 0 24 24'><g id='a541df50-fd9e-4caa-a0b0-88989a27c682' data-name='Warstwa 6'><polygon points='12 15.53 5.65 9.18 6.35 8.47 12 14.12 17.65 8.47 18.35 9.18 12 15.53'/></g></svg>");
+$select-caret-disabled: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><g id='a541df50-fd9e-4caa-a0b0-88989a27c682' data-name='Warstwa 6'><polygon points='12 15.53 5.65 9.18 6.35 8.47 12 14.12 17.65 8.47 18.35 9.18 12 15.53'/></g></svg>");
+
+.form\:select-input{
+    background-color: $white;
+    background-image: escape-svg( $select-caret );
+    background-size: 24px 24px;
+    background-repeat: no-repeat;
+    background-position: right 16px center;
+    width: 100%;
+    outline: none;
+    cursor: pointer;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    padding-left: 14px;
+    padding-right: 64px;
+    border: 1px solid $form-input-border-color;
+    border-radius: $form-input-border-radius;
+    font-size: $form-input-font-size;
+    transition: border .15s ease-in-out, box-shadow .2s ease-in-out;
+    appearance: none;
+
+    &:hover{
+        border-color: $form-input-border-color-hover;
+    }
+
+    &:focus,
+    &:active{
+        &:not([disabled]){
+            @include zIndex('content');
+            box-shadow: 0 0 0 .15rem $form-input-box-shadow-focus;
+        }
+    }
+
+    &:disabled{
+        background-image: escape-svg( $select-caret-disabled );
+        background-color: $form-input-background-color-disabled;
+        border-color: $form-input-border-color-disabled;
+        color: $form-input-color-disabled;
+    }
+
+    &[readonly]{
+        outline: none;
+        border: none;
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+}

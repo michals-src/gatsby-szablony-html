@@ -1,0 +1,49 @@
+$card-title-color: $theme-color-secondary;
+$card-price-color: $theme-color-primary;
+
+.site-pricing--card{
+    border-color: transparent;
+    background-color: $theme-color-gray-100;
+    color: $grey-60;
+    border-radius: 18px;
+
+    &.is-special{
+        box-shadow: 0 0 0 3px $card-price-color;
+    }
+
+    .site-pricing--card-price{
+        color: $card-price-color;
+        
+        .badge{
+            background: transparent;
+            color: $card-price-color;
+            padding-left: 14px;
+            padding-right: 14px;
+            padding-top: 5px;
+            padding-bottom: 3px;
+            line-height: 1;
+            font-size: 12px;
+        }
+    }
+
+    ul li{
+        display: flex;
+        align-items: center;
+        flex: 1;
+        color: $theme-color-gray-500;
+        
+        &:not(:last-child){
+            &{
+                margin-bottom: 10px;
+            }
+        }
+
+        .icon{
+            fill: $card-title-color;
+        }
+    }
+}
+
+.site-pricing--sample1{
+   
+}

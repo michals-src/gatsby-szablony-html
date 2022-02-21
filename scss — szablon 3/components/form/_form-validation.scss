@@ -1,0 +1,75 @@
+$form-validation-map: (
+    'valid': (
+        'color': $green-30
+    ),
+    'invalid': (
+        'color': $red-30
+    )
+) !default;
+
+
+
+@mixin form-validation(
+    $state,
+    $color
+){
+    .form\:input[data-valid=#{$state}],
+    .form\:select-input[data-valid=#{$state}] {
+        border-color: $color;
+
+        & + .form\:is-feedback{
+            color: $color;
+        }
+    }
+
+    .form\:select-input[data-valid=#{$state}] {
+        $select-caret: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' stroke='#{$color}' viewBox='0 0 24 24'><g id='a541df50-fd9e-4caa-a0b0-88989a27c682' data-name='Warstwa 6'><polygon points='12 15.53 5.65 9.18 6.35 8.47 12 14.12 17.65 8.47 18.35 9.18 12 15.53'/></g></svg>");
+        background-image: escape-svg( $select-caret );
+    }
+
+    .form\:select,
+    .form\:checkbox,
+    .form\:radio-button{
+        &.form\:is-#{$state} + .form\:is-feedback{
+            color: $color;
+        }
+    }
+
+    .form\:checkbox:has(:not([checked])) + .form\:is-feedback{
+        color: $grey-10;
+    }
+
+
+    .form\:checkbox-input[data-valid=#{$state}]{
+        color: $color;
+        & + .form\:checkbox-label{
+            color: $color;
+        }
+        &:checked + .form\:checkbox-label{
+            color: $form-input-color;
+        }
+
+        & + .form\:checkbox-label::before{
+            border-color: $color;
+        }
+    }
+
+    .form\:radio-button-input[data-valid=#{$state}]{
+
+        & + .form\:radio-button-label{
+            color: $color;
+        }
+
+        &:checked + .form\:radio-button-label {
+            color: $form-input-color;
+        }
+
+        & + .form\:radio-button-label .form\:radio-button-check{
+             border-color: $color;
+        }
+    }
+}
+
+@each $state, $data in $form-validation-map{
+    @include form-validation( $state, $data... );
+}

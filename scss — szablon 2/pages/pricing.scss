@@ -1,0 +1,43 @@
+$card-title-color: $theme-color-secondary;
+$card-price-color: $theme-color-primary;
+
+.site-content-pricing--cards-item{
+    background-color: $theme-color-primary;
+    color: $theme-color-white;
+
+    header{
+        position: relative;
+        &::before{
+            content: "";
+            width: 80%;
+            height: 3px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: $theme-color-white;
+        }
+    }
+
+    ul{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li{
+            margin-bottom: 15px;
+
+            svg{
+                fill: $theme-color-white;
+            }
+        }
+    }
+
+    .button{
+        background-color: $theme-color-black;
+        transition: transform .2s ease;
+
+        &:hover{
+            transform: translateY(-5px);
+        }
+    }
+}

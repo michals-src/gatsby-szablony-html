@@ -1,0 +1,14 @@
+$pricing-table-color-border: $theme-color-gray-200;
+
+.pricing-table{
+    border: 1px solid $pricing-table-color-border;
+    border-radius: 10px;
+
+    .row:nth-child(2n){
+        background-color: mix(white, $theme-color-primary, 90%);
+    }
+
+    .row:not(:last-child){
+        border-bottom: 1px solid $pricing-table-color-border;
+    }
+}

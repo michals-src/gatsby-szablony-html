@@ -1,0 +1,43 @@
+.form\:switch .form\:checkbox-input{
+
+    &:not(:checked):active,
+    &:not(:checked):focus{
+        & + .form\:checkbox-label::before{
+            background-color: $grey-10;
+        }
+    }
+    
+    & + .form\:checkbox-label{
+        padding-left: 55px;
+
+        &::before{
+            width: 35px;
+            border-radius: 25px;
+            transition: background-color .13s ease-in-out;
+        }
+        &::after{
+            width: 18px;
+            height: 18px;
+            background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$form-input-border-color}' viewBox='0 0 24 24'><g id='Warstwa_14' data-name='Warstwa 14'><circle cx='12' cy='12' r='6'/></g></svg>"));
+            background-position: left center;
+            opacity: 1;
+            position: absolute;
+            left: 3px;
+            top: 0;
+            border: none;
+            transition: left .115s ease-in-out;
+        }
+    }
+
+    &:checked{
+        & + .form\:checkbox-label::after{
+            left: 16px;
+            background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$form-checkbox-icon-color}' viewBox='0 0 24 24'><g id='Warstwa_14' data-name='Warstwa 14'><circle cx='12' cy='12' r='6'/></g></svg>"));
+        }
+    }
+
+    &:disabled + .form\:checkbox-label::after{
+        opacity: 1;
+        background-image: escape-svg(url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' fill='#{$form-input-border-color-disabled}' viewBox='0 0 24 24'><g id='Warstwa_14' data-name='Warstwa 14'><circle cx='12' cy='12' r='6'/></g></svg>"));
+    }
+}

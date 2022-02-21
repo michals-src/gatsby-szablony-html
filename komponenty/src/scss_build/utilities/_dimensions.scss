@@ -1,0 +1,167 @@
+/**
+
+    width
+    height
+
+    .w\:is-n: 1840px / n
+    .w\:is-25: 25%
+    .w\:is-50: 50%;
+    .w\:is-75: 75%;
+    .w\:is-100
+    .w\:auto
+    .w\:min-n: 1840px / n
+    .w\:max-n: 1840px / n
+    .w\:vw: 100vw
+    .w\:vw-n: 100vw / n
+
+    .h\:is-n: 785px / n
+
+*/
+
+$container-width-sm: $breakpoint-sm - ($container-gap * 2);
+$container-width-md: $breakpoint-md - ($container-gap * 2);
+$container-width-lg: $breakpoint-lg - ($container-gap * 2);
+$container-width-xxl: $breakpoint-xxl - ($container-gap * 2);
+$container-width-3xl: $breakpoint-3xl - ($container-gap * 2);
+
+$width-breakpoints: (
+    'sm':   $container-width-sm,
+    'md':   $container-width-md,
+    'lg':   $container-width-lg,
+    'xl':   $container-width-xxl,
+    '3xl':   $container-width-3xl
+) !default;
+
+
+@each $width-name, $width-value in $width-breakpoints{
+
+    $index: index( map-keys($width-breakpoints), $width-name );
+
+    // For XS breakpoint each of width is 100%
+
+    .w\:is-#{$index},
+    .w\:min-#{$index},
+    .w\:min-#{$index}{
+        width: 100%;
+    }
+
+    // Wszystkie szerokości są dostępne od minimalnej wartości md
+    @include media-breakpoint-up( 'md', $grid-breakpoints ){
+        .w\:is-#{$index}{
+            width: $width-value;
+        }
+        .w\:min-#{$index}{
+            min-width: $width-value;
+        }
+        .w\:max-#{$index}{
+            max-width: $width-value;
+            margin-bottom:10px;
+        }
+    }
+
+    // Dodanie responsywaności
+    @each $breakpoint, $breakpoint-size in $grid-breakpoints{
+        // Uniknięcie nadpisania klasy bez $infix w przypadku, gdy $breakpoint == xs
+        @if $breakpoint != "xs" {
+            @include media-breakpoint-up( $breakpoint, $grid-breakpoints ){
+                $infix: breakpoint-infix( $breakpoint, $grid-breakpoints, "\\@" );
+
+                .w\:is-#{$index}#{$infix}{
+                    width: $width-value;
+                }
+                .w\:min-#{$index}#{$infix}{
+                    min-width: $width-value;
+                }
+                .w\:max-#{$index}#{$infix}{
+                    max-width: $width-value;
+                    margin-bottom:10px;
+                }
+        
+            }
+        }
+    }
+}
+
+
+@each $breakpoint, $breakpoint-size in $grid-breakpoints{
+    @include media-breakpoint-up( $breakpoint, $grid-breakpoints ){
+
+        $infix: breakpoint-infix( $breakpoint, $grid-breakpoints, "\\@" );
+        $width-value: $breakpoint-size;
+
+
+        
+
+        @for $i from 1 through 8{
+            $height-value: floor($i / 8 * 800px);
+
+            .h\:is-#{$i}#{$infix}{
+                height: $height-value;
+            }
+            .h\:min-#{$i}#{$infix}{
+                min-height: $height-value;
+            }
+            .h\:max-#{$i}#{$infix}{
+                max-height: $height-value;
+            }
+        }
+
+        @for $i from 1 through 10{
+            $width-value: $i / 10 * 100vw;
+            $height-value: $i / 10 * 100vh;
+
+            .w\:ww-#{$i}#{$infix}{
+                width: calc(#{$width-value});
+            }
+            .w\:min-ww-#{$i}#{$infix}{
+                min-width: calc(#{$width-value});
+            }
+            .w\:max-ww-#{$i}#{$infix}{
+                max-width: calc(#{$width-value});
+            }
+
+           
+            .h\:wh-#{$i}#{$infix}{
+                height: calc(#{$height-value});
+            }
+            .h\:min-wh-#{$i}#{$infix}{
+                min-height: calc(#{$height-value});
+            }
+            .h\:max-wh-#{$i}#{$infix}{
+                max-height: calc(#{$height-value});
+            }
+        }
+
+        .w\:is-25#{$infix}{
+            width: 25%;
+        }
+        .w\:is-50#{$infix}{
+            width: 50%;
+        }
+        .w\:is-75#{$infix}{
+            width: 75%;
+        }
+        .w\:is-100#{$infix}{
+            width: 100%;
+        }
+        .w\:auto#{$infix}{
+            width: auto;
+        }
+        
+        .h\:is-25#{$infix}{
+            height: 25%;
+        }
+        .h\:is-50#{$infix}{
+            height: 50%;
+        }
+        .h\:is-75#{$infix}{
+            height: 75%;
+        }
+        .h\:is-100#{$infix}{
+            height: 100%;
+        }
+        .h\:auto#{$infix}{
+            height: auto;
+        }
+    }
+}

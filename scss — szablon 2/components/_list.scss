@@ -1,0 +1,41 @@
+$list-border-color: $grey-60;
+
+.list{
+    list-style: none;
+
+    &.is-numeric{
+        list-style-type: decimal;
+    }
+
+    &.is-disc{
+        list-style-type: disc;
+    }
+
+    &.is-circle{
+        list-style-type: circle;
+    }
+    
+    &.has-border{
+        border: 1px solid $list-border-color;
+    }
+
+    & .list-item{
+        padding: 18px 9px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        &.has-divider{
+            border-bottom: 1px solid $list-border-color;
+        }
+
+            & .list{
+                padding-left: 6px;
+            }
+    }
+
+    &.has-path{
+        padding-left: 5px;
+        border-left: 2px solid $grey-30;
+    }
+}

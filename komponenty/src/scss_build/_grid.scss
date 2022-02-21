@@ -1,0 +1,55 @@
+/*
+
+    .grid -- grid
+    .grid:r -- grid : row
+    .grid:c-width@breakpoint -- grid : column
+    .grid:offset-width@breakpoint
+
+    
+    <div className="grid:r">
+        <div className="grid:c-6 grid:offset-4"></div>
+    </div>
+
+
+*/
+
+
+.grid\:r{
+
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -$grid-gap;
+    margin-right: -$grid-gap;
+
+    & > *{
+        width: 100%;
+        max-width: 100%;
+        padding-left: $grid-gap;
+        padding-right: $grid-gap;
+        box-sizing: border-box;
+    }
+}
+
+@each $breakpoint, $breakpoint-size in $grid-breakpoints{
+    @include media-breakpoint-up( $breakpoint, $grid-breakpoints ){
+        $infix: breakpoint-infix( $breakpoint, $grid-breakpoints, "\\@" );
+
+        .grid\:c-auto#{$infix}{
+            flex: 0 0 auto;
+            width: auto;
+        }
+
+        @for $i from 1 through $grid-columns{
+            .grid\:c-#{$i}#{$infix}{
+                @include make-col( $i, $grid-columns );
+            }
+        }
+
+        @for $i from 1 through $grid-columns - 1{
+            .grid\:offset-#{$i}#{$infix}{
+                @include make-offset( $i, $grid-columns );
+            }
+        }
+
+    }
+} 

@@ -1,0 +1,103 @@
+/**
+
+    Rozmiar tekstu      .text{rozmiar}{?-breakpoint}
+    Grubość tekstu      .text{weight}-is
+    Dekoracja           .text-{decoration}
+    Wysokość linii      .text{line height}-line{?-breakpoint}
+
+*/
+
+$text-scale: (
+
+) !default;
+
+
+$text-size-max-scale: 9; // Must be even number, half smaller, others larger
+$text-line-height-scale: 4;
+$text-small-max: 3rem;
+$text-large-max: 9rem;
+$text-weights: 300, 400, 500, 700, 800;
+
+@each $breakpoint, $breakpoint-size in $grid-breakpoints{
+    @include media-breakpoint-up( $breakpoint, $grid-breakpoints ){
+        
+        $infix: breakpoint-infix( $breakpoint, $grid-breakpoints );
+        $text-half-size-max-scale: $text-size-max-scale / 2;
+
+        /**
+        *   Larger text sizes
+        *   from 0 to 3
+        *   
+        *   @start-size .875rem * 3
+        */
+
+        @for $i from 0 through 3 {
+
+            $text-index: $i + 1;
+
+            .text#{$text-index}#{$infix}{
+                font-size: (.875rem * 3) + ((3-$i) * 1.125rem);
+            }
+        }
+
+        /**
+        *   Smaller text sizes
+        *   from 0 to 3
+        *   
+        *   @start-size .875rem
+        */
+        @for $i from 0 through 4 {
+
+            $text-index: $i + 5;
+
+            .text#{$text-index}#{$infix}{
+                font-size: .875rem + ((4-$i) * .25rem);
+            }
+        }
+
+        @for $i from 0 through $text-line-height-scale{
+            .text#{$i}-line#{$infix}{
+                line-height: ($i/$text-line-height-scale * 0.5) + 1;
+            }
+        }
+
+    }
+}
+
+@each $weight in $text-weights{
+    .text-#{$weight}-is{
+        font-weight: #{$weight};
+    }
+}
+
+.text-left{
+    text-align: left;
+}
+
+.text-center{
+    text-align: center;
+}
+
+.text-right{
+    text-align: right;
+}
+
+.text-underline{
+    text-decoration: underline;
+}
+.text-strike{
+    text-decoration: line-through;
+}
+.text-bold{
+    font-weight: bold ;
+    font-weight: 700 !important;
+}
+.text-italic{
+    font-style: italic !important;
+}
+.text-capitalize{
+    text-transform: capitalize;
+}
+.text-uppercase{
+    text-transform: uppercase;
+}

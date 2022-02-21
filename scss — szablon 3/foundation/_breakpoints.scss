@@ -1,0 +1,66 @@
+@function breakpoint-min( $breakpoint, $breakpoints-map: $grid-breakpoints ){
+    $min: map-get( $breakpoints-map, $breakpoint );
+    @return if( $min != 0, $min, null );
+}
+
+@function breakpoint-max( $breakpoint, $breakpoints-map: $grid-breakpoints ){
+    $max: map-get( $breakpoints-map, $breakpoint );
+    @return if( $max > 0, $max - .02, null );
+}
+
+/**
+    Specify infix for breakpoint
+*/
+@function breakpoint-infix( $breakpoint, $breakpoints-map: $grid-breakpoints, $separator: "-" ){
+    @return if( breakpoint-min( $breakpoint, $breakpoints-map ) == null, "", "#{$separator}#{$breakpoint}" );
+}
+
+
+//Breaks when browser width < max-width
+@mixin media-breakpoint-up($breakpoint-name, $breakpoints-map: $grid-breakpoints ){
+    $min: breakpoint-min( $breakpoint-name, $breakpoints-map );
+    @if $min{
+        @media (min-width:  $min){
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+//Whether the browser's width > max-width
+@mixin media-breakpoint-down( $breakpoint-name, $breakpoints-map: $grid-breakpoints ){
+    $max: breakpoint-max( $breakpoint-name, $breakpoints-map );
+    @if $max{
+        @media (max-width:  $max){
+            @content;
+        }
+    } @else {
+        @content;
+    }
+}
+
+//Whether the browser's width > max-width or width < max-width
+//Specify min-width < browser width < max-width
+@mixin media-breakpoint-between( $minimum, $maximum, $breakpoints-map: $grid-breakpoints ){
+    $min: breakpoint-min( $minimum, $breakpoints-map );
+    $max: breakpoint-max( $maximum, $breakpoints-map );
+
+    @if $min != null and $max != null {
+        @media (min-width:  $min) and (max-width:  $max){
+            @content;
+        }
+    }
+}
+
+@mixin media-from( $breakpoint ){
+    @media (min-width: $breakpoint){
+        @content;
+    }
+}
+
+@mixin media-until( $breakpoint ){
+    @media (max-width: $breakpoint){
+        @content;
+    }
+}

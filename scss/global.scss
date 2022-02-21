@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;500;700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@300;400;500;700;800&family=Lato:wght@300;400;700&family=Open+Sans:wght@300;400;700;800&family=Palanquin:wght@300;400;500;700&family=Poppins:wght@300;400;500;700;800&family=Roboto:ital,wght@0,300;0,500;0,700;1,400&family=Yantramanav:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime&family=IBM+Plex+Mono:wght@400;500&family=JetBrains+Mono:wght@400;500&family=Roboto+Mono:wght@400;500&display=swap');
+
+//@import '../assets/fontawesome-free-5.15.2-web/css/all.min.css';
+
+// ---------- INIT -----------
+@import './variables'; // Most for theme tags or basic values 
+   
+// e.g. default spacing, default radius, default widths ...
+@import './normalize';
+
+// ---------- FOUNDATION -----------
+@import './foundation/functions';
+@import './foundation/keyframes';
+@import './foundation/breakpoints';
+@import './foundation/scale';
+@import './foundation/shadows';
+@import './foundation/z-index';
+
+// ---------- MIXINS -----------
+@import './mixins/typograph';
+@import './mixins/grid';
+@import './mixins/form';
+@import './mixins/symbols';
+
+// ----------  -----------
+@import './grid';   
+@import './typograph';  // Customize, add font families
+@import './table';
+@import './theme-tags'; // Customize globals html tags
+
+
+// ---------- CPOMPONENTS -----------
+@import './components/form';
+@import './components/buttons';
+@import './components/alerts';
+@import './components/badges';
+@import './components/icon';
+@import './components/breadcumb';
+@import './components/card';
+@import './components/list';
+@import './components/pagination';
+@import './components/tooltip';
+@import './components/nav';
+@import './components/tabs';
+@import './components/navbar';
+@import './components/modal';
+@import './components/steps';
+@import './components/path';
+@import './components/dropdown';
+@import './components/notification';
+@import './components/collection';
+
+// -------- HELPERS -------------
+// @import 'utilities/colors';
+// @import 'utilities/border';
+@import './utilities/flex';
+@import './utilities/dimensions';
+@import './utilities/shadows';
+@import './utilities/visibility';
+@import './utilities/text';
+@import './utilities/spacing';
+@import './utilities/image';
+
+
+
+
+// -------- Strony -------------
+@import './pages/homepage';
+@import './pages/about';
+@import './pages/team';
+@import './pages/pricing';
+@import './pages/services';
+// @import 'pages/blog';
+@import './pages/portfolio';
+@import './pages/contact';
+@import './pages/shared';
+@import './pages/page-hero';

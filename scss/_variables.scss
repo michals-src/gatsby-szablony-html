@@ -1,0 +1,56 @@
+$prefix: '' !default;
+$spacer: '' !default;
+
+@import './foundation/colors';
+
+$breakpoint-xs: 0;
+$breakpoint-sm: 640px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 1024px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1380px;
+$breakpoint-3xl: 1750px;
+
+//Breakpoints
+$grid-breakpoints: (
+    'xs':   $breakpoint-xs,
+    'sm':   $breakpoint-sm,
+    'md':   $breakpoint-md,
+    'lg':   $breakpoint-lg,
+    'xl':   $breakpoint-xl,
+    'xxl':   $breakpoint-xxl,
+    '3xl':   $breakpoint-3xl,
+) !default;
+
+
+$theme-font-family: 'Work Sans', Yantramanav, 'Open Sans', Palanquin, Lato, Roboto, Poppins, sans-serif;
+$theme-font-family-monospace-base: 'JetBrains Mono', 'Courier Prime', 'IBM Plex Mono', 'Roboto Mono', monospace;
+$theme-color: $grey-90;
+
+
+$font-size-base: 1rem !default;
+$line-height-base: 1.5;
+$line-height-clasp: 1.25;
+$line-height-clasper: 1;
+$link-color-base: $blue-30;
+
+
+
+$grid-columns: 12 !default;
+$grid-gap: 15px !default;
+
+$container-gap: $grid-gap;
+
+$theme-color-white: $white;
+$theme-color-black: $black;
+
+$theme-color-primary: #68b3af;
+
+$theme-color-gray-100: #fafafa;
+$theme-color-gray-200: #d9dcdb;
+$theme-color-gray-300: #a6acab;
+$theme-color-gray-400: #848b8b;
+$theme-color-gray-500: #414545;
+
+$theme-color-border: $theme-color-gray-400;
+$theme-radius-border: 1.35rem !default;

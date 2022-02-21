@@ -1,0 +1,102 @@
+$spacing-map: () !default;
+
+$margin-map: (
+    'margin': (
+        'props': margin,
+        'name': m\:
+    ),
+    'margin-left': (
+        'props': margin-left,
+        'name': m\:l-
+    ),
+    'margin-right': (
+        'props': margin-right,
+        'name': m\:r-
+    ),
+    'margin-top': (
+        'props': margin-top,
+        'name': m\:t-
+    ),
+    'margin-bottom': (
+        'props': margin-bottom,
+        'name': m\:b-
+    ),
+    'margin-x': (
+        'props': margin-right margin-left,
+        'name': m\:x-
+    ),
+    'margin-y': (
+        'props': margin-top margin-bottom,
+        'name': m\:y-
+    )
+);
+
+$padding-map: (
+    'padding': (
+        'props': padding,
+        'name': p\:
+    ),
+    'padding-left': (
+        'props': padding-left,
+        'name': p\:l-
+    ),
+    'padding-right': (
+        'props': padding-right,
+        'name': p\:r-
+    ),
+    'padding-top': (
+        'props': padding-top,
+        'name': p\:t-
+    ),
+    'padding-bottom': (
+        'props': padding-bottom,
+        'name': p\:b-
+    ),
+    'padding-x': (
+        'props': padding-right padding-left,
+        'name': p\:x-
+    ),
+    'padding-y': (
+        'props': padding-top padding-bottom,
+        'name': p\:y-
+    ),
+);
+
+$spacing-map: map-merge($spacing-map, $margin-map);
+$spacing-map: map-merge($spacing-map, $padding-map);
+
+@each $breakpoint, $breakpoint-size in $grid-breakpoints{
+    $infix: breakpoint-infix( $breakpoint, $grid-breakpoints, "\\@" );
+    
+    @include media-breakpoint-up( $breakpoint, $grid-breakpoints ){
+
+        @each $i, $keys in $spacing-map{
+
+            $props: map-get( $keys, 'props' );
+            $cName: map-get( $keys, 'name' );
+
+            @if( type-of($props) == "string" ){
+                $props: ($props);
+            }
+
+
+            @for $i from 0 to 16{
+                .#{$cName}#{$i}#{$infix}{
+                    @each $prop in $props{
+                        #{$prop}: prx--rem(($i/15 * 180px)) !important;
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+.m\:auto{
+    margin-left: auto;
+    margin-right: auto;
+}
+.p\:gaps{
+    padding-left: $container-gap;
+    padding-right: $container-gap;
+}

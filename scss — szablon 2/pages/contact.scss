@@ -1,0 +1,21 @@
+.site-content-contact--socials{
+    @include zIndex();
+}
+
+.site-content-contact--socials-item{
+    position: relative;
+    padding-left: 30px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+
+    .site-content-contact--socials-item-icon{
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+
+        svg{
+            fill: #eee;
+        }
+    }
+}

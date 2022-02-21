@@ -1,0 +1,162 @@
+.site-header-navbar{
+    background-color: $hero-color-background;
+    color: $white;
+    
+    a{
+        color: $white;
+    }
+}
+
+.site-footer{
+    background-color: $theme-color-black;
+    color: $white;
+
+    .site-footer-socials{
+        a{
+            display: block;
+            color: $theme-color-white; 
+            &:not(:last-child){
+                margin-right: 15px;
+            }
+        }
+    }
+
+    .site-footer-links{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+
+        li{
+            display: block;
+            a{
+                color: $theme-color-white;
+
+                &:hover{
+                    color: $theme-color-primary;
+                }
+            }
+
+            &:not(:last-child){
+                margin-bottom: 8px;
+            }
+        }
+    }
+
+    footer{
+        margin: 0;
+        padding: 0;
+        opacity: .5;
+        a{
+            color: inherit;
+        }
+    }
+}
+
+.site-cta-newsletter{
+    background: $theme-color-background;
+    color: $theme-color-black;
+
+    .site-cta-newsletter--slogan{
+        border-top: 1px solid $theme-color-gray-200;
+
+        a{
+            text-decoration: none;
+            padding-bottom: 4px;
+            margin-left: 4px;
+            color: $theme-color-primary;
+            border-bottom: 3px solid $theme-color-primary;
+            transition: border-bottom-color .15s ease-in-out;
+
+            &:hover{
+                border-bottom-color: transparent;
+            }
+        }
+    }
+}
+
+.site-content-section--header{
+    position: relative;
+    @include zIndex();
+}
+
+.site-content-section--testimoials{
+
+
+
+    .site-content-section--testimoials-content{
+        overflow: hidden;
+        background-color: $theme-color-primary;
+        color: $theme-color-white;
+    }
+
+    .site-content-section--testimoials-content-slider{
+        width: 3000px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+    
+    .site-content-section--testimoials-item{
+        width: calc(75vw);
+        padding-right: 50px;
+        flex: 0 0 auto;
+
+        @include media-from($breakpoint-lg){
+            width: calc(40vw);
+        }
+        @include media-from($breakpoint-3xl){
+            width: calc(35vw);
+        }
+    }
+
+    .site-content-section--testimoials-nav{
+        display: flex;
+        flex-direction: row;
+        height: 100%;
+        margin-top: 40px;
+    }
+}
+
+.section--testimoials2-wrapper{
+    background-color: $theme-color-gray-100;
+}
+
+.site-content-section--companies{
+    border-top: 1px solid $theme-color-gray-100;
+
+    .site-content-section--companies-content{
+        position: relative;
+    }
+
+    header{
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding-left: 15px;
+        padding-right: 15px;
+        background-color: $theme-color-white;
+        transform: translateY(-40%);
+    }
+
+    ul{
+        padding: 0;
+        margin: 0;
+        list-style: none;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        a{
+            opacity: .6;
+            transition: opacity .15s ease-in-out;
+
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
+}
+
+.site-content-color-primary{
+    color: $theme-color-primary;
+}

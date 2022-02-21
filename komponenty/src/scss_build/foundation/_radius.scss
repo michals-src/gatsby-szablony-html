@@ -1,0 +1,15 @@
+$border-radius-map: (
+    'none':     0,
+    'small':    53px,
+    'medium':   10px,
+    'large':    25px,
+    'circle':   50%
+) !default;
+
+@mixin border-radius(
+    $name: 'small'
+){
+
+    border-radius: map-get( $border-radius-map, $name );
+    
+}

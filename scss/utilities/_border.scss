@@ -1,0 +1,88 @@
+/**
+    .bo:color: color pallete
+    .bo:w-n -- border-width: n
+    .bo:style: solid dashed double dotted
+
+*/
+$border-styles: none, solid, dashed, dotted, double, groove;
+$colors-pallete-mix: map-merge($colors-pallete-mix, (
+    'white': $white,
+    'black': $black,
+));
+
+@for $i from 1 through 6{
+    .border#{$i}{
+        border-width: floor($i / 6 * 6px);
+        border-style: solid;
+        border-color: $border-color-base;
+    }
+
+    .border#{$i}-left{
+        border-left-width: floor($i / 6 * 6px);
+        border-left-style: solid;
+        border-left-color: $border-color-base;
+    }
+    .border#{$i}-right{
+        border-right-width: floor($i / 6 * 6px);
+        border-right-style: solid;
+        border-right-color: $border-color-base;
+    }
+    .border#{$i}-top{
+        border-top-width: floor($i / 6 * 6px);
+        border-top-style: solid;
+        border-top-color: $border-color-base;
+    }
+    .border#{$i}-bottom{
+        border-bottom-width: floor($i / 6 * 6px);
+        border-bottom-style: solid;
+        border-bottom-color: $border-color-base;
+    }
+}
+
+@each $style in $border-styles{
+    .border-#{$style}{
+        border-style: #{$style};
+    }
+}
+
+// @each $name, $colors in $colors-pallete-mix{
+
+//     @if length($colors) > 1 {
+//         @for $i from 1 through 9{
+//             .border\:#{$name}-#{$i}{
+//                 border-color: nth($colors, $i);
+//             }
+//         }
+//     }@else{
+//         .border\:#{$name}{
+//             border-color: nth($colors, 1);
+//         }
+//     }
+
+// }
+
+.border0{
+    border: none;
+}
+
+@for $i from 0 through 4{
+    .border#{$i}-radius{
+        border-radius: $i / 4 * 16px; 
+    }
+    .border#{$i}-top-radius{
+        border-top-left-radius: $i / 4 * 16px; 
+        border-top-right-radius: $i / 4 * 16px; 
+    }
+    .border#{$i}-bottom-radius{
+        border-bottom-left-radius: $i / 4 * 16px; 
+        border-bottom-right-radius: $i / 4 * 16px; 
+    }
+    .border#{$i}-left-radius{
+        border-top-left-radius: $i / 4 * 16px; 
+        border-bottom-left-radius: $i / 4 * 16px; 
+    }
+    .border#{$i}-right-radius{
+        border-top-right-radius: $i / 4 * 16px; 
+        border-bottom-right-radius: $i / 4 * 16px; 
+    }
+}

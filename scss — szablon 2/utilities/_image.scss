@@ -1,0 +1,23 @@
+/**
+    Dopasowanoe elementu img do rodzica
+*/
+
+$image-fit: containt, cover, none;
+
+.image-mask{
+    overflow: hidden;
+}
+
+.image-mask-x{
+    overflow-x: hidden;
+}
+
+.image-mask-y{
+    overflow-y: hidden;
+}
+
+@each $fitting in $image-fit{
+    .image-#{$fitting}{
+        object-fit: #{$fitting};
+    }
+}

@@ -1,0 +1,176 @@
+.site-navbar{
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.site-header-main--hero{
+    display: block;
+    width: 100%;
+    position: relative;
+    @include zIndex();
+
+    .site-header-main--hero-text{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding-left: 50px;
+
+        .site-header-main--hero-text-subline{
+            width: 100%;
+        }
+
+        @include media-from( $breakpoint-lg ){
+            &{
+                width: 60%;
+                padding-left: 0;
+
+                .site-header-main--hero-text-subline{
+                    width: 50%;
+                }        
+            }
+        }
+    }
+
+    .site-header-main--hero-image{
+        position: absolute;
+        z-index: -1;
+        top: 0;
+        left: 30px;
+        right: 30px;
+        width: 100%;
+        height: 100%;
+        
+        overflow: hidden;
+        border-radius: 45px 0 0 45px;
+
+        img{
+            width: 100%;
+            object-fit: cover;
+        }
+
+        @include media-from( $breakpoint-lg ){
+            &{
+                width: 60%;
+                left: auto;
+                right: 0;
+            }
+        }
+    }
+}
+
+.site-content-main--features{
+    .site-content-main--features-item{
+        position: relative;
+        
+        .icon{
+            margin-bottom: 16px;
+            svg{
+                fill: $theme-color-primary;
+            }
+        }
+    }
+
+}
+
+.site-content-services--details{
+    width: 100%;
+    overflow: hidden;
+
+    .site-content-services--details-container{
+        position: relative;
+    }
+    
+    // .site-content-services--details-items{
+
+    // }
+
+    .site-content-services--details-image{
+        display: none;
+        height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 0 30px 30px 0;
+
+        img{
+            border-radius: 0 30px 30px 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            margin-left: auto;
+            object-fit: cover;
+
+            @include media-from( $breakpoint-lg ){
+                &{
+                    height: auto;
+                }
+            }
+        }
+
+        @include media-from( $breakpoint-md ){
+            &{
+                display: block;
+            }
+        }
+    }
+
+    .icon svg{
+        fill: $theme-color-primary;
+    }
+}
+
+
+
+.site-content-about--steps-item{
+    color: $theme-color-gray-500;
+    padding: 35px 45px;
+    text-align: center;
+
+    .badge{
+        background-color: $theme-color-primary;
+        color: $theme-color-white;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 15px;
+    }
+}
+
+
+.site-footer{
+    padding-bottom: 65px;
+
+    footer{
+        color: $theme-color-gray-300;
+    }
+}
+
+.site-footer--nav{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    list-style-type: none;
+
+    li{
+        display: block;
+        &:not(:first-child){
+            margin: 8px 0 0 0;
+        }
+    }
+
+    a{
+        display: block;
+        color: $theme-color-gray-400;
+    }
+
+    @include media-until( $breakpoint-md ){
+        &{
+            flex-direction: row;
+
+            li:not(:first-child){
+                margin: 0 0 0 8px;
+            }
+        }
+    }
+}

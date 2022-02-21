@@ -1,0 +1,15 @@
+$z-index-map: (
+    'negative': -1,
+    'default': 1,
+    'content': 1000,
+    'cover': 9999,
+    'floating': 99999,
+) !default;
+
+$z-index-default: map-get( $z-index-map, 'content' );
+
+@mixin zIndex( 
+    $name: $z-index-default,
+){
+    z-index: map-get( $z-index-map, $name );
+}
