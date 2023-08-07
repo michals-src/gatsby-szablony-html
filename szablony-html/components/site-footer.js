@@ -4,32 +4,16 @@ export default function Site_footer() {
     return (
         <div className="site-footer">
             <div className="site-cta-newsletter">
-                <div className="w4-max m-auto p-gaps">
-                    <div className="p6-y">
-                        <div className="row">
-                            <div className="col12 col5-lg">
-                                <div className="site-cta-newsletter--slogan text4-line">
-                                    <h4>Chcesz zacząć kolejny projekt ? Podrzuć nam linijkę lub dwie</h4>
-                                    <h4>na <a href="#">adres@email.com</a></h4>
-                                </div>
-                            </div>
-                            <div className="col12 col5-lg offset2-lg">
-                                <div className="site-cta-newsletter--form">
-                                    <form action="#">
-                                        <div className="form-controls-row">
-                                            <input type="text" placeholder="Subskrybuj i bądź na bieżąco" className="form-input form-input-lg" />
-                                            <button className="button button-outline button-is-lg">
-                                                <div className="icon32">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><path d="M39.4,40h0a1,1,0,0,1,0-1.42L45,33H16.4a1,1,0,0,1-1-1h0a1,1,0,0,1,1-1H45L39.4,25.42a1,1,0,0,1,0-1.42h0a1,1,0,0,1,1.42,0l7.64,7.65a.5.5,0,0,1,0,.7L40.82,40A1,1,0,0,1,39.4,40Z"/></svg>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    </form>
-                                </div>
+               <div className="w4-max m-auto p-gaps">
+                    <div className="site-cta-newsletter--slogan text4-line">
+                        <div className="w3-max">
+                            <div className="p6-y">
+                                <p className="text5 text4-md text2-line m0">Zróbmy coś razem niesamowitego,</p>
+                                <h6 className="text5 text4-md text2-line">Zacznij przez <a href="mailto:">napisanie cześć !</a></h6>
                             </div>
                         </div>
                     </div>
-                </div>
+               </div>
             </div>
             <div className="w4-max m-auto p-gaps">
                 <div className="p5-y">

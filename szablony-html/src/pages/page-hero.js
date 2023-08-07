@@ -1,5 +1,7 @@
 import React from 'react';
 
+import $site_page_image from '../images/site-page.png';
+
 export default function Page_hero({
     name,
     label = "Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eaque fuga quod magnam voluptatem nulla natus suscipit soluta quis deserunt!",

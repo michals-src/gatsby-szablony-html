@@ -16,29 +16,18 @@ export default function About() {
     return (
         <>
             <div className="site-header">
-                <div className="site-header-navbar">
-                    <div className="w5-max m-auto p-gaps">
-                        <Site_navbar />
-                    </div>
+                <div className="w5-max m-auto p-gaps">
+                    <Site_navbar />
                 </div>
-                <Page_hero />
             </div>
             
             
             <div className="site-content">
-                <div className="site-content-about--mission-wrapper">
-                    <div className="p10-y">
-                        <div className="w4-max m-auto p-gaps">
-                            <About_mission />
-                        </div>
-                    </div>
-                </div>
-
-                <div className="w4-max m-auto">
-                    <About_colaboration />
-                </div>
-
+                <About_colaboration />
                 <div className="w4-max m-auto p-gaps">
+                    <div className="m10-t">
+                        <About_mission />
+                    </div>
                     <div className="m10-y">
                         <Team_members />
                     </div>
